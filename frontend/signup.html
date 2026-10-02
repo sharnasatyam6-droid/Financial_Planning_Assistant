@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | Finora</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="auth-page">
+
+    <main class="auth-container">
+
+        <section class="auth-brand">
+            <a href="index.html" class="auth-logo">Finora</a>
+
+            <div class="auth-brand-content">
+                <span class="section-tag">START YOUR JOURNEY</span>
+                <h1>Build better financial awareness.</h1>
+                <p>
+                    Bring your income, expenses and goals together
+                    and turn financial data into useful decisions.
+                </p>
+            </div>
+
+            <div class="auth-brand-footer">
+                <span>Private by design</span>
+                <span>•</span>
+                <span>Built for financial awareness</span>
+            </div>
+        </section>
+
+        <section class="auth-form-section">
+
+            <div class="auth-form-wrapper">
+
+                <a href="index.html" class="mobile-auth-logo">Finora</a>
+
+                <div class="auth-heading">
+                    <span class="section-tag">CREATE ACCOUNT</span>
+                    <h2>Get started with Finora</h2>
+                    <p>Create your account and begin planning.</p>
+                </div>
+
+                <form class="auth-form">
+
+                    <div class="form-group">
+                        <label for="name">Full name</label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Enter your full name"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mobile">Mobile number</label>
+
+                        <div class="input-with-prefix">
+                            <span>+91</span>
+                            <input
+                                type="tel"
+                                id="mobile"
+                                placeholder="Enter your mobile number"
+                                maxlength="10"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Enter your email address"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+
+                            <input
+                                type="password"
+                                id="password"
+                                placeholder="Create password"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm password</label>
+
+                            <input
+                                type="password"
+                                id="confirm-password"
+                                placeholder="Confirm password"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+                    <button type="submit" class="auth-submit">
+                        Create account
+                    </button>
+
+                </form>
+
+                <div class="auth-divider">
+                    <span>Already have an account?</span>
+                </div>
+
+                <a href="login.html" class="secondary-auth-btn">
+                    Login to Finora
+                </a>
+
+                <p class="auth-disclaimer">
+                    Your financial information will be handled securely.
+                    Finora is designed for financial awareness and planning,
+                    not investment or regulated financial advice.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

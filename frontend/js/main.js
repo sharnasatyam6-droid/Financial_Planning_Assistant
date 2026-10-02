@@ -1,7 +1,7 @@
-const buttons = document.querySelectorAll(".primary-btn");
+const mobileInputs = document.querySelectorAll('input[type="tel"]');
 
-buttons.forEach(function(button) {
-    button.addEventListener("click", function() {
-        alert("Finora account setup will be available in the next version.");
+mobileInputs.forEach(function(input) {
+    input.addEventListener("input", function() {
+        input.value = input.value.replace(/\D/g, "");
     });
 });
