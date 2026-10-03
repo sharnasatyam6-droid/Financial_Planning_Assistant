@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from pwdlib import PasswordHash
-from database.database import get_connection
+from backend.database.database import get_connection
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])
 

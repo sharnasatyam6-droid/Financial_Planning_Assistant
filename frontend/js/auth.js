@@ -1,3 +1,7 @@
+const apiUrl = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost"
+    ? "http://127.0.0.1:8000"
+    : "";
+
 const forms = document.querySelectorAll(".auth-form");
 
 forms.forEach(function(form) {
@@ -12,7 +16,7 @@ forms.forEach(function(form) {
             const confirmPassword = document.querySelector("#confirm-password").value;
 
             try {
-                const response = await fetch("http://127.0.0.1:8000/auth/signup", {
+                const response = await fetch(`${apiUrl}/auth/signup`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -45,7 +49,7 @@ forms.forEach(function(form) {
             const password = document.querySelector("#password").value;
 
             try {
-                const response = await fetch("http://127.0.0.1:8000/auth/login", {
+                const response = await fetch(`${apiUrl}/auth/login`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
