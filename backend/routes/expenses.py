@@ -103,6 +103,9 @@ def import_expenses(data: list[ImportExpense]):
         connection.close()
         raise HTTPException(status_code=404, detail="User not found")
 
+    imported_count = 0
+    skipped_count = 0
+
     for expense in data:
         if expense.user_id != user_id:
             connection.close()
@@ -128,6 +131,20 @@ def import_expenses(data: list[ImportExpense]):
             connection.close()
             raise HTTPException(status_code=400, detail="Online imported expenses need a transaction ID")
 
+        if expense.payment_mode == "online" and expense.transaction_id.strip():
+            duplicate = connection.execute(
+                """
+                SELECT id FROM expenses
+                WHERE user_id = ? AND transaction_id = ?
+                LIMIT 1
+                """,
+                (expense.user_id, expense.transaction_id.strip())
+            ).fetchone()
+
+            if duplicate:
+                skipped_count += 1
+                continue
+
         connection.execute(
             """
             INSERT INTO expenses
@@ -144,13 +161,15 @@ def import_expenses(data: list[ImportExpense]):
                 expense.expense_date
             )
         )
+        imported_count += 1
 
     connection.commit()
     connection.close()
 
     return {
-        "message": f"{len(data)} expenses imported successfully",
-        "imported_count": len(data)
+        "message": f"{imported_count} expenses imported successfully",
+        "imported_count": imported_count,
+        "skipped_count": skipped_count
     }
 
 
