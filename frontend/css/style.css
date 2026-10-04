@@ -4757,3 +4757,565 @@ input {
         flex-direction: column;
     }
 }
+
+
+
+/* FINORA FINAL VISUAL SYSTEM */
+
+:root {
+    --background: #f4f7f5;
+    --surface: #ffffff;
+    --text: #101814;
+    --muted: #6f7c76;
+    --border: rgba(16, 24, 20, 0.09);
+    --primary: #168c70;
+    --primary-dark: #0b4f40;
+    --soft-green: #e7f6f0;
+    --success: #168c70;
+    --ink: #101814;
+    --glow: rgba(22, 140, 112, 0.24);
+}
+
+body {
+    background:
+        radial-gradient(circle at 8% 0%, rgba(22, 140, 112, 0.08), transparent 28%),
+        radial-gradient(circle at 92% 10%, rgba(238, 172, 49, 0.07), transparent 24%),
+        var(--background);
+}
+
+body:not(.dashboard-page):not(.auth-page):not(.onboarding-page) {
+    overflow-x: hidden;
+}
+
+.navbar {
+    background: rgba(244, 247, 245, 0.78);
+    border-bottom: 1px solid rgba(16, 24, 20, 0.07);
+    backdrop-filter: blur(22px) saturate(150%);
+}
+
+.logo {
+    color: var(--ink);
+    position: relative;
+}
+
+.logo::before {
+    content: "";
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    margin: 0 8px 2px 0;
+    border-radius: 50%;
+    background: var(--primary);
+    box-shadow: 0 0 0 6px rgba(22, 140, 112, 0.09), 0 0 22px var(--glow);
+}
+
+.nav-links a:hover,
+.login-link:hover {
+    color: var(--primary);
+}
+
+.primary-btn,
+.auth-submit,
+.onboarding-page .auth-button {
+    background: linear-gradient(135deg, #168c70, #0f6b58);
+    box-shadow: 0 12px 28px rgba(15, 107, 88, 0.18);
+}
+
+.primary-btn:hover,
+.auth-submit:hover,
+.onboarding-page .auth-button:hover {
+    background: linear-gradient(135deg, #1aa27f, #0f6654);
+    box-shadow: 0 16px 34px rgba(15, 107, 88, 0.25);
+    transform: translateY(-2px);
+}
+
+.secondary-btn {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(12px);
+}
+
+.hero {
+    position: relative;
+    padding: 115px 0 105px;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 430px;
+    height: 430px;
+    right: -120px;
+    top: 20px;
+    border-radius: 50%;
+    background: rgba(22, 140, 112, 0.08);
+    filter: blur(8px);
+    pointer-events: none;
+}
+
+.hero-grid {
+    position: relative;
+    z-index: 1;
+    gap: 78px;
+}
+
+.hero-badge {
+    background: rgba(231, 246, 240, 0.92);
+    border: 1px solid rgba(22, 140, 112, 0.13);
+    box-shadow: 0 10px 28px rgba(22, 140, 112, 0.08);
+}
+
+.hero h1 {
+    font-size: clamp(54px, 6vw, 82px);
+    letter-spacing: -4.8px;
+    line-height: 0.99;
+}
+
+.hero h1 span {
+    background: linear-gradient(120deg, #168c70 0%, #0b4f40 55%, #1ca47f 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-content > p {
+    color: #66756f;
+    font-size: 18px;
+}
+
+.hero-note span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #dff4eb;
+}
+
+.dashboard-preview {
+    position: relative;
+    padding: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow:
+        0 35px 90px rgba(16, 24, 20, 0.13),
+        0 0 0 1px rgba(22, 140, 112, 0.04);
+    backdrop-filter: blur(22px);
+    transform: perspective(1200px) rotateY(-2deg) rotateX(1deg);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.dashboard-preview:hover {
+    transform: perspective(1200px) rotateY(0deg) rotateX(0deg) translateY(-5px);
+    box-shadow: 0 45px 110px rgba(16, 24, 20, 0.17);
+}
+
+.preview-card,
+.goal-preview,
+.spending-preview {
+    border-color: rgba(16, 24, 20, 0.07);
+    background: rgba(255, 255, 255, 0.74);
+}
+
+.preview-status {
+    background: #e3f7ef;
+    color: #13745d;
+    box-shadow: 0 5px 18px rgba(22, 140, 112, 0.1);
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, #168c70, #32b48f);
+    box-shadow: 0 0 18px rgba(22, 140, 112, 0.28);
+}
+
+.chart-bars span {
+    background: linear-gradient(180deg, #32b48f, #168c70);
+}
+
+.trusted-section,
+.how-section,
+.footer {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(16px);
+}
+
+.feature-card {
+    position: relative;
+    overflow: hidden;
+    border-color: rgba(16, 24, 20, 0.08);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.76);
+    box-shadow: 0 12px 35px rgba(16, 24, 20, 0.04);
+}
+
+.feature-card::after {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    right: -50px;
+    top: -50px;
+    border-radius: 50%;
+    background: rgba(22, 140, 112, 0.08);
+    transition: transform 0.35s ease;
+}
+
+.feature-card:hover::after {
+    transform: scale(2.1);
+}
+
+.feature-card:hover {
+    border-color: rgba(22, 140, 112, 0.18);
+    box-shadow: 0 22px 48px rgba(16, 24, 20, 0.09);
+    transform: translateY(-7px);
+}
+
+.step {
+    border-top: 0;
+    border-left: 2px solid var(--primary);
+    border-radius: 0 14px 14px 0;
+    background: rgba(255, 255, 255, 0.52);
+    transition: 0.25s ease;
+}
+
+.step:hover {
+    background: rgba(231, 246, 240, 0.72);
+    transform: translateX(4px);
+}
+
+.cta-box {
+    position: relative;
+    overflow: hidden;
+    border-radius: 26px;
+    background:
+        radial-gradient(circle at 85% 15%, rgba(60, 188, 151, 0.32), transparent 28%),
+        linear-gradient(135deg, #092f27, #0b5545 58%, #0e6a55);
+    box-shadow: 0 30px 80px rgba(8, 55, 44, 0.24);
+}
+
+.cta-box::after {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    right: -90px;
+    bottom: -120px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 50%;
+    box-shadow: 0 0 0 35px rgba(255, 255, 255, 0.035), 0 0 0 75px rgba(255, 255, 255, 0.025);
+}
+
+.auth-page {
+    background:
+        radial-gradient(circle at 0% 0%, rgba(22, 140, 112, 0.14), transparent 34%),
+        radial-gradient(circle at 100% 100%, rgba(238, 172, 49, 0.08), transparent 30%),
+        #f4f7f5;
+}
+
+.auth-brand {
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 85% 20%, rgba(46, 181, 143, 0.3), transparent 25%),
+        linear-gradient(145deg, #071f1a, #0b4f40 62%, #0d6b56);
+}
+
+.auth-brand::after {
+    content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    right: -210px;
+    bottom: -210px;
+    border: 1px solid rgba(255,255,255,0.13);
+    border-radius: 50%;
+    box-shadow: 0 0 0 55px rgba(255,255,255,0.025), 0 0 0 110px rgba(255,255,255,0.02);
+}
+
+.auth-form-section {
+    background: rgba(255,255,255,0.42);
+    backdrop-filter: blur(12px);
+}
+
+.auth-form-wrapper,
+.onboarding-page .auth-box {
+    position: relative;
+}
+
+.form-group input,
+.input-with-prefix,
+.onboarding-page .input-group input,
+.onboarding-page .input-group select {
+    border-color: rgba(16, 24, 20, 0.12);
+    background: rgba(255,255,255,0.86);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+}
+
+.form-group input:focus,
+.input-with-prefix:focus-within,
+.onboarding-page .input-group input:focus,
+.onboarding-page .input-group select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(22, 140, 112, 0.10);
+}
+
+.onboarding-page {
+    background:
+        radial-gradient(circle at 10% 15%, rgba(22, 140, 112, 0.13), transparent 30%),
+        radial-gradient(circle at 90% 85%, rgba(238, 172, 49, 0.08), transparent 28%),
+        #f4f7f5;
+}
+
+.onboarding-page .auth-box {
+    border-radius: 24px;
+    background: rgba(255,255,255,0.78);
+    border-color: rgba(255,255,255,0.9);
+    box-shadow: 0 30px 90px rgba(16, 24, 20, 0.12);
+    backdrop-filter: blur(20px);
+}
+
+.dashboard-page {
+    background:
+        radial-gradient(circle at 100% 0%, rgba(22, 140, 112, 0.06), transparent 25%),
+        #f3f6f4;
+}
+
+.dashboard-layout {
+    position: relative;
+}
+
+.sidebar,
+.finora-sidebar {
+    background:
+        radial-gradient(circle at 100% 0%, rgba(43, 175, 137, 0.15), transparent 27%),
+        linear-gradient(180deg, #091b17 0%, #0c2922 55%, #0a201b 100%);
+    border-right: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 18px 0 55px rgba(4, 25, 20, 0.10);
+}
+
+.sidebar-brand a,
+.finora-brand {
+    letter-spacing: -1.3px;
+}
+
+.brand-mark {
+    box-shadow: 0 0 0 7px rgba(42, 183, 143, 0.08), 0 0 26px rgba(42, 183, 143, 0.22);
+}
+
+.finora-nav-link {
+    border: 1px solid transparent;
+    transition: 0.22s ease;
+}
+
+.finora-nav-link:hover {
+    background: rgba(255,255,255,0.055);
+    border-color: rgba(255,255,255,0.06);
+    transform: translateX(3px);
+}
+
+.finora-nav-link.active {
+    background: linear-gradient(90deg, rgba(33, 160, 124, 0.20), rgba(33, 160, 124, 0.06));
+    border-color: rgba(58, 190, 151, 0.14);
+    box-shadow: inset 3px 0 0 #2fb58f, 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.finora-main {
+    background: transparent;
+}
+
+.finora-header {
+    position: relative;
+}
+
+.finora-header h1 {
+    letter-spacing: -1.8px;
+}
+
+.finora-header h1,
+.dashboard-page h1 {
+    text-shadow: 0 1px 0 rgba(255,255,255,0.6);
+}
+
+.today-badge,
+.profile-chip {
+    background: rgba(255,255,255,0.72);
+    border-color: rgba(16,24,20,0.08);
+    box-shadow: 0 8px 25px rgba(16,24,20,0.05);
+    backdrop-filter: blur(14px);
+}
+
+.financial-summary {
+    gap: 15px;
+}
+
+.money-card,
+.dashboard-panel,
+.alert-total-card,
+.alert-monitor-card,
+.alerts-panel {
+    border-color: rgba(16,24,20,0.08);
+    border-radius: 18px;
+    background: rgba(255,255,255,0.78);
+    box-shadow: 0 12px 35px rgba(16,24,20,0.045);
+    backdrop-filter: blur(14px);
+}
+
+.money-card {
+    position: relative;
+    overflow: hidden;
+    transition: 0.25s ease;
+}
+
+.money-card::after {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    right: -55px;
+    bottom: -55px;
+    border-radius: 50%;
+    background: rgba(22,140,112,0.055);
+}
+
+.money-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 45px rgba(16,24,20,0.09);
+}
+
+.primary-money-card {
+    background:
+        radial-gradient(circle at 88% 18%, rgba(64, 198, 158, 0.26), transparent 30%),
+        linear-gradient(135deg, #0a4034, #0c6954);
+    box-shadow: 0 18px 45px rgba(10, 64, 52, 0.22);
+}
+
+.dashboard-panel {
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.dashboard-panel:hover {
+    box-shadow: 0 20px 48px rgba(16,24,20,0.07);
+}
+
+.panel-label,
+.header-eyebrow {
+    letter-spacing: 0.12em;
+}
+
+.signal-highlight {
+    border-radius: 17px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.75);
+}
+
+.signal-highlight.warning,
+.signal-highlight.critical,
+.signal-highlight.info {
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 12px 30px rgba(16,24,20,0.04);
+}
+
+.intelligence-score-card,
+.intelligence-insight,
+.what-if-controls,
+.simulation-result,
+.receipt-result,
+.receipt-dropzone,
+.import-dropzone {
+    border-color: rgba(16,24,20,0.08);
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(12px);
+}
+
+.intelligence-score strong {
+    background: linear-gradient(135deg, #101814, #168c70);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.finora-expense-list .expense-item {
+    border-color: rgba(16,24,20,0.07);
+    background: rgba(255,255,255,0.66);
+}
+
+.finora-expense-list .expense-item:hover {
+    border-color: rgba(22,140,112,0.18);
+    box-shadow: 0 10px 25px rgba(16,24,20,0.05);
+}
+
+.expense-primary-button,
+.simulation-button,
+.secondary-action-button {
+    box-shadow: 0 10px 24px rgba(16,24,20,0.10);
+}
+
+.expense-primary-button:hover,
+.simulation-button:hover {
+    transform: translateY(-2px);
+}
+
+.receipt-dropzone:hover,
+.import-dropzone:hover {
+    box-shadow: inset 0 0 0 1px rgba(22,140,112,0.16), 0 12px 28px rgba(22,140,112,0.06);
+}
+
+@keyframes finoraFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.hero-badge {
+    animation: finoraFloat 4s ease-in-out infinite;
+}
+
+@keyframes finoraPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(22,140,112,0.14); }
+    50% { box-shadow: 0 0 0 9px rgba(22,140,112,0); }
+}
+
+.brand-mark {
+    animation: finoraPulse 3.5s ease-in-out infinite;
+}
+
+@media (max-width: 900px) {
+    .hero {
+        padding-top: 80px;
+    }
+
+    .dashboard-preview {
+        transform: none;
+    }
+
+    .dashboard-preview:hover {
+        transform: translateY(-3px);
+    }
+}
+
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 47px;
+        letter-spacing: -2.7px;
+    }
+
+    .dashboard-preview {
+        border-radius: 19px;
+    }
+
+    .feature-card {
+        border-radius: 15px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-badge,
+    .brand-mark {
+        animation: none;
+    }
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
