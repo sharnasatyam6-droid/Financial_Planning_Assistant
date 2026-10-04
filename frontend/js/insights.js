@@ -73,9 +73,97 @@ async function loadInsights() {
     }
 }
 
+async function runSimulation() {
+    const reduction = Number(document.querySelector("#spending-reduction").value) || 0;
+    const extraSaving = Number(document.querySelector("#extra-saving").value) || 0;
+    const status = document.querySelector("#simulation-status");
+    const result = document.querySelector("#simulation-result");
+
+    if (reduction < 0 || extraSaving < 0) {
+        status.textContent = "Enter values of 0 or more.";
+        return;
+    }
+
+    status.textContent = "Calculating your scenario...";
+    result.classList.remove("ready");
+
+    try {
+        const response = await fetch("/insights/simulate", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                user_id: user.id,
+                monthly_reduction: reduction,
+                extra_monthly_saving: extraSaving
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.detail || "Simulation failed");
+        }
+
+        document.querySelector("#simulation-improvement").textContent =
+            "+" + formatMoney(data.monthly_improvement) + " / month";
+
+        document.querySelector("#simulation-spending").textContent =
+            formatMoney(data.projected_spending);
+
+        document.querySelector("#simulation-capacity").textContent =
+            formatMoney(data.projected_capacity);
+
+        document.querySelector("#simulation-rate").textContent =
+            data.projected_spending_rate + "%";
+
+        const goalLabel = document.querySelector("#simulation-goal-label");
+        const goalValue = document.querySelector("#simulation-goal");
+
+        if (data.goal_months === null) {
+            goalLabel.textContent = "Goal timeline";
+            goalValue.textContent = "Set a goal";
+        } else if (data.goal_months === 0) {
+            goalLabel.textContent = data.goal_name;
+            goalValue.textContent = "Reached";
+        } else {
+            goalLabel.textContent = data.goal_name;
+            goalValue.textContent =
+                data.goal_months + (data.goal_months === 1 ? " month" : " months");
+        }
+
+        const improvement = Number(data.monthly_improvement);
+
+        if (improvement > 0) {
+            document.querySelector("#simulation-message").textContent =
+                "This scenario creates " + formatMoney(improvement) +
+                " more monthly capacity based on your current recorded activity.";
+        } else {
+            document.querySelector("#simulation-message").textContent =
+                "This scenario does not increase monthly capacity yet. Try reducing spending or adding planned saving.";
+        }
+
+        status.textContent = "Projection updated from your current recorded numbers.";
+        result.classList.add("ready");
+
+    } catch (error) {
+        status.textContent = error.message || "Unable to run the simulation.";
+    }
+}
+
+document.querySelector("#run-simulation").addEventListener("click", runSimulation);
+
 document.querySelector("#logout-button").addEventListener("click", function() {
     localStorage.removeItem("finoraUser");
     window.location.href = "login.html";
+});
+
+document.querySelectorAll(".coming-link").forEach(function(link) {
+    link.addEventListener("click", function(event) {
+        event.preventDefault();
+        alert("This feature will be available in the next prototype version.");
+    });
 });
 
 loadInsights();
