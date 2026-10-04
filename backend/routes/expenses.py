@@ -65,6 +65,95 @@ def add_expense(data: ExpenseData):
     }
 
 
+class ImportExpense(BaseModel):
+    user_id: int
+    amount: float
+    category: str
+    description: str
+    payment_mode: str
+    transaction_id: str = ""
+    expense_date: str
+
+
+@router.post("/import")
+def import_expenses(data: list[ImportExpense]):
+    if not data:
+        raise HTTPException(status_code=400, detail="No expenses were provided")
+
+    allowed_categories = [
+        "Food",
+        "Transport",
+        "Education",
+        "Shopping",
+        "Bills",
+        "Entertainment",
+        "Health",
+        "Other"
+    ]
+
+    connection = get_connection()
+
+    user_id = data[0].user_id
+    user = connection.execute(
+        "SELECT id FROM users WHERE id = ?",
+        (user_id,)
+    ).fetchone()
+
+    if not user:
+        connection.close()
+        raise HTTPException(status_code=404, detail="User not found")
+
+    for expense in data:
+        if expense.user_id != user_id:
+            connection.close()
+            raise HTTPException(status_code=400, detail="All imported expenses must belong to the same user")
+
+        if expense.amount <= 0:
+            connection.close()
+            raise HTTPException(status_code=400, detail="Imported amounts must be greater than 0")
+
+        if expense.category not in allowed_categories:
+            connection.close()
+            raise HTTPException(status_code=400, detail="Invalid expense category in imported data")
+
+        if expense.payment_mode not in ["cash", "online"]:
+            connection.close()
+            raise HTTPException(status_code=400, detail="Invalid payment mode in imported data")
+
+        if not expense.description.strip() or not expense.expense_date:
+            connection.close()
+            raise HTTPException(status_code=400, detail="Imported expenses need a description and date")
+
+        if expense.payment_mode == "online" and not expense.transaction_id.strip():
+            connection.close()
+            raise HTTPException(status_code=400, detail="Online imported expenses need a transaction ID")
+
+        connection.execute(
+            """
+            INSERT INTO expenses
+            (user_id, amount, category, description, payment_mode, transaction_id, expense_date)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                expense.user_id,
+                expense.amount,
+                expense.category,
+                expense.description.strip(),
+                expense.payment_mode,
+                expense.transaction_id.strip(),
+                expense.expense_date
+            )
+        )
+
+    connection.commit()
+    connection.close()
+
+    return {
+        "message": f"{len(data)} expenses imported successfully",
+        "imported_count": len(data)
+    }
+
+
 @router.get("/{user_id}")
 def get_expenses(user_id: int):
     connection = get_connection()
