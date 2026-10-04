@@ -302,7 +302,10 @@ importButton.addEventListener("click", function() {
             }
 
             importStatus.textContent =
-                data.imported_count + " transactions imported successfully.";
+                data.imported_count + " transactions imported successfully." +
+                (data.skipped_count
+                    ? " " + data.skipped_count + " duplicate transaction(s) skipped."
+                    : "");
 
             statementFile.value = "";
             importFileName.textContent = "CSV files only";
