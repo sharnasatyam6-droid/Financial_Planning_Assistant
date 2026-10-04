@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insights - Finora</title>
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/insights.css">
 </head>
 <body class="dashboard-page">
 <aside class="finora-sidebar">
@@ -25,6 +26,7 @@
 <button id="logout-button" class="finora-logout"><span>↪</span>Logout</button>
 </div>
 </aside>
+
 <main class="finora-main">
 <header class="finora-header">
 <div class="header-left">
@@ -57,6 +59,53 @@
 <section class="dashboard-panel intelligence-insights-panel">
 <div class="panel-top"><div><p class="panel-label">WHAT FINORA SEES</p><h2>Patterns worth knowing</h2><p class="panel-description">Explanations generated from your recorded data.</p></div></div>
 <div id="insights-list" class="intelligence-insights-list"><div class="insight-loading">Reading your financial activity...</div></div>
+</section>
+
+<section class="dashboard-panel what-if-panel">
+<div class="panel-top">
+<div>
+<p class="panel-label">WHAT-IF SIMULATION</p>
+<h2>See the impact before you change anything.</h2>
+<p class="panel-description">Explore simple spending or saving changes using your current recorded numbers.</p>
+</div>
+<span class="what-if-icon">↗</span>
+</div>
+
+<div class="what-if-grid">
+<div class="what-if-controls">
+<div class="simulation-field">
+<label for="spending-reduction">Reduce monthly spending by</label>
+<div class="simulation-input"><span>₹</span><input id="spending-reduction" type="number" min="0" step="100" value="0"></div>
+</div>
+<div class="simulation-field">
+<label for="extra-saving">Add extra monthly saving</label>
+<div class="simulation-input"><span>₹</span><input id="extra-saving" type="number" min="0" step="100" value="0"></div>
+</div>
+<button id="run-simulation" class="simulation-button">Run simulation</button>
+<p id="simulation-status">This is a projection based on your current recorded activity.</p>
+</div>
+
+<div id="simulation-result" class="simulation-result">
+<div class="simulation-empty">
+<span>✦</span>
+<strong>Build a scenario</strong>
+<p>Choose a change and Finora will show how your monthly capacity and goal timeline could change.</p>
+</div>
+<div class="simulation-results-content">
+<div class="simulation-result-header">
+<span>PROJECTED SCENARIO</span>
+<strong id="simulation-improvement">+₹0 / month</strong>
+</div>
+<div class="simulation-result-grid">
+<div><span>Projected spending</span><strong id="simulation-spending">₹0</strong></div>
+<div><span>Monthly capacity</span><strong id="simulation-capacity">₹0</strong></div>
+<div><span>Spending rate</span><strong id="simulation-rate">0%</strong></div>
+<div><span id="simulation-goal-label">Goal timeline</span><strong id="simulation-goal">—</strong></div>
+</div>
+<p id="simulation-message">Your scenario will appear here.</p>
+</div>
+</div>
+</div>
 </section>
 
 <section class="dashboard-panel intelligence-disclaimer">
