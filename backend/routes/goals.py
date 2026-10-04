@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
+from datetime import date
 from backend.database.database import get_connection
 
 router = APIRouter(prefix="/goals", tags=["Savings Goals"])
@@ -116,8 +117,6 @@ def get_goal(user_id: int):
         "target_amount": goal["target_amount"],
         "target_date": goal["target_date"]
     }
-
-from datetime import date
 
 
 @router.get("/plan/{user_id}")
