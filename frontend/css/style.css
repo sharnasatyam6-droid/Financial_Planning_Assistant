@@ -4547,3 +4547,213 @@ input {
         flex-direction: column;
     }
 }
+
+
+/* FINORA V0.9 RECEIPT OCR */
+.receipt-intelligence-panel {
+    margin-bottom: 18px;
+}
+
+.receipt-workspace {
+    display: grid;
+    grid-template-columns: minmax(250px, 0.72fr) minmax(360px, 1.28fr);
+    gap: 22px;
+    margin-top: 20px;
+}
+
+.receipt-dropzone {
+    min-height: 155px;
+    border: 1.5px dashed #cbd2df;
+    border-radius: 14px;
+    background: #fafbfc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.receipt-dropzone:hover {
+    border-color: var(--primary);
+    background: #f7fbf9;
+}
+
+.receipt-scan-icon {
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: var(--soft-green);
+    color: var(--primary);
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.receipt-dropzone strong {
+    font-size: 13px;
+    color: var(--text);
+}
+
+.receipt-dropzone span:last-child {
+    color: #98a2b3;
+    font-size: 11px;
+}
+
+.receipt-preview-wrap {
+    display: none;
+    margin-top: 12px;
+    height: 145px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #f7f8fa;
+    text-align: center;
+}
+
+.receipt-preview-wrap.visible {
+    display: block;
+}
+
+.receipt-preview-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.receipt-intelligence-panel .secondary-action-button {
+    margin-top: 12px;
+}
+
+.receipt-intelligence-panel .secondary-action-button:disabled {
+    opacity: 0.55;
+    cursor: wait;
+}
+
+.receipt-result {
+    min-height: 225px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: #fafbfc;
+    padding: 20px;
+}
+
+.receipt-result-empty {
+    min-height: 185px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.receipt-result-empty span {
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #edf3f0;
+    color: var(--primary);
+    font-size: 17px;
+}
+
+.receipt-result-empty strong {
+    margin-top: 11px;
+    color: var(--text);
+    font-size: 13px;
+}
+
+.receipt-result-empty p {
+    max-width: 380px;
+    margin-top: 7px;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.receipt-review-form {
+    display: none;
+}
+
+.receipt-result.ready .receipt-result-empty {
+    display: none;
+}
+
+.receipt-result.ready .receipt-review-form {
+    display: block;
+}
+
+.receipt-review-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.receipt-review-heading span {
+    color: var(--primary);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+.receipt-review-heading small {
+    color: #98a2b3;
+    font-size: 10px;
+}
+
+.receipt-form-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 13px;
+}
+
+.receipt-review-actions {
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.receipt-review-actions select,
+.receipt-review-actions input {
+    min-height: 44px;
+    border: 1px solid #dfe3e9;
+    border-radius: 9px;
+    background: white;
+    padding: 0 12px;
+    color: var(--text);
+    font-size: 12px;
+    outline: none;
+}
+
+.receipt-review-actions .expense-primary-button {
+    margin: 0;
+    padding: 0 18px;
+    white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+    .receipt-workspace {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 650px) {
+    .receipt-form-grid,
+    .receipt-review-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .receipt-review-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
