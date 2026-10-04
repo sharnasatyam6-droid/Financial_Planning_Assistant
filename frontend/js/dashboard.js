@@ -386,7 +386,9 @@ async function loadSpendingTrend() {
 
         const data = await response.json();
 
-        const labels = data.trend.map(function(item) {
+        const trend = data.trend.slice().reverse();
+
+        const labels = trend.map(function(item) {
             const parts = item.month.split("-");
             const date = new Date(parts[0], Number(parts[1]) - 1);
 
@@ -396,7 +398,7 @@ async function loadSpendingTrend() {
             });
         });
 
-        const values = data.trend.map(function(item) {
+        const values = trend.map(function(item) {
             return Number(item.total);
         });
 
