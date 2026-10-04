@@ -1,7 +1,10 @@
 import sqlite3
+from pathlib import Path
+
+database_path = Path(__file__).resolve().parent.parent.parent / "finora.db"
 
 def get_connection():
-    connection = sqlite3.connect("finora.db")
+    connection = sqlite3.connect(database_path)
     connection.row_factory = sqlite3.Row
     return connection
 
@@ -16,6 +19,19 @@ def create_tables():
             email TEXT NOT NULL UNIQUE,
             password TEXT NOT NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    """)
+
+    connection.execute("""
+        CREATE TABLE IF NOT EXISTS financial_profiles (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL UNIQUE,
+            monthly_income REAL NOT NULL,
+            current_savings REAL NOT NULL,
+            fixed_expenses REAL NOT NULL,
+            financial_priority TEXT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users(id)
         )
     """)
 

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Setup - Finora</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="auth-container">
+        <div class="auth-box onboarding-box">
+            <div class="brand">Finora</div>
+
+            <h1>Let's understand your finances</h1>
+            <p class="auth-subtitle">
+                Tell us a little about your current financial situation.
+            </p>
+
+            <form class="auth-form" id="onboarding-form">
+
+                <div class="input-group">
+                    <label for="income">Monthly Income</label>
+                    <input
+                        type="number"
+                        id="income"
+                        placeholder="Enter your monthly income"
+                        min="0"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label for="savings">Current Savings</label>
+                    <input
+                        type="number"
+                        id="savings"
+                        placeholder="Enter your current savings"
+                        min="0"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label for="fixed-expenses">Monthly Fixed Expenses</label>
+                    <input
+                        type="number"
+                        id="fixed-expenses"
+                        placeholder="Rent, fees, bills, etc."
+                        min="0"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label for="priority">Financial Priority</label>
+                    <select id="priority" required>
+                        <option value="">Select your priority</option>
+                        <option value="saving">Increase Savings</option>
+                        <option value="expenses">Control Expenses</option>
+                        <option value="goal">Achieve a Specific Goal</option>
+                        <option value="balance">Balance Spending & Saving</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="auth-button">
+                    Continue
+                </button>
+
+            </form>
+        </div>
+    </div>
+
+    <script src="js/onboarding.js"></script>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Finora</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="dashboard-page">
+
+    <div class="dashboard-layout">
+
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <a href="dashboard.html">Finora</a>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="dashboard.html" class="sidebar-link active">
+                    <span>⌂</span>
+                    Overview
+                </a>
+
+                <a href="#" class="sidebar-link coming-link">
+                    <span>₹</span>
+                    Expenses
+                    <small>Soon</small>
+                </a>
+
+                <a href="#" class="sidebar-link coming-link">
+                    <span>◎</span>
+                    Goals
+                    <small>Soon</small>
+                </a>
+
+                <a href="#" class="sidebar-link coming-link">
+                    <span>▣</span>
+                    Budget
+                    <small>Soon</small>
+                </a>
+
+                <a href="#" class="sidebar-link coming-link">
+                    <span>✦</span>
+                    Insights
+                    <small>Soon</small>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-note">
+                    <span>◈</span>
+                    <div>
+                        <strong>Financial awareness</strong>
+                        <p>Plan better. Spend smarter.</p>
+                    </div>
+                </div>
+
+                <button id="logout-button" class="logout-button">
+                    Log out
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <main class="dashboard-main">
+
+            <header class="dashboard-header">
+
+                <div>
+                    <span class="dashboard-label">PERSONAL FINANCIAL OVERVIEW</span>
+                    <h1 id="welcome-title">Good morning</h1>
+                    <p>Here's a simple picture of your financial position.</p>
+                </div>
+
+                <div class="profile-chip">
+                    <div class="profile-avatar" id="profile-avatar">U</div>
+
+                    <div>
+                        <strong id="profile-name">User</strong>
+                        <span>Personal account</span>
+                    </div>
+                </div>
+
+            </header>
+
+
+            <section class="status-banner">
+
+                <div class="status-icon">✓</div>
+
+                <div>
+                    <strong>Your financial setup is complete</strong>
+                    <p>
+                        Finora has your basic financial information.
+                        Expense tracking will make this overview smarter.
+                    </p>
+                </div>
+
+                <span class="status-tag">SETUP COMPLETE</span>
+
+            </section>
+
+
+            <section class="summary-grid">
+
+                <div class="summary-card">
+                    <span>Monthly income</span>
+                    <strong id="income-value">₹0</strong>
+                    <small>Your current monthly income</small>
+                </div>
+
+                <div class="summary-card">
+                    <span>Fixed expenses</span>
+                    <strong id="expenses-value">₹0</strong>
+                    <small>Regular monthly commitments</small>
+                </div>
+
+                <div class="summary-card">
+                    <span>Current savings</span>
+                    <strong id="savings-value">₹0</strong>
+                    <small>Total savings entered</small>
+                </div>
+
+                <div class="summary-card highlight-card">
+                    <span>Available after fixed costs</span>
+                    <strong id="available-value">₹0</strong>
+                    <small>Income minus fixed expenses</small>
+                </div>
+
+            </section>
+
+
+            <section class="dashboard-grid">
+
+                <div class="panel financial-position">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="panel-label">FINANCIAL POSITION</span>
+                            <h2>Where you stand</h2>
+                        </div>
+
+                        <span class="panel-badge">Current</span>
+                    </div>
+
+                    <div class="position-content">
+
+                        <div class="position-circle">
+                            <div>
+                                <strong id="remaining-percent">0%</strong>
+                                <span>available</span>
+                            </div>
+                        </div>
+
+                        <div class="position-details">
+
+                            <div class="detail-row">
+                                <span>
+                                    <i class="income-dot"></i>
+                                    Monthly income
+                                </span>
+                                <strong id="position-income">₹0</strong>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>
+                                    <i class="expense-dot"></i>
+                                    Fixed expenses
+                                </span>
+                                <strong id="position-expenses">₹0</strong>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>
+                                    <i class="saving-dot"></i>
+                                    Remaining
+                                </span>
+                                <strong id="position-remaining">₹0</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel priority-panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="panel-label">YOUR PRIORITY</span>
+                            <h2 id="priority-title">Financial planning</h2>
+                        </div>
+                    </div>
+
+                    <div class="priority-content">
+
+                        <div class="priority-icon">✦</div>
+
+                        <h3 id="priority-heading">Build a stronger financial plan</h3>
+
+                        <p id="priority-text">
+                            Your financial priority will help Finora personalize
+                            future recommendations.
+                        </p>
+
+                        <div class="future-feature">
+                            <span>COMING NEXT</span>
+                            <strong>Goal-based planning</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="section-heading dashboard-section-heading">
+
+                <div>
+                    <span class="panel-label">FINORA ROADMAP</span>
+                    <h2>Your financial journey</h2>
+                </div>
+
+                <p>
+                    These features will become active as your financial data grows.
+                </p>
+
+            </section>
+
+
+            <section class="roadmap-grid">
+
+                <div class="roadmap-card active-roadmap">
+                    <span class="roadmap-number">01</span>
+                    <div>
+                        <span class="roadmap-status">ACTIVE</span>
+                        <h3>Financial Profile</h3>
+                        <p>Your income, savings and fixed expenses are stored securely.</p>
+                    </div>
+                </div>
+
+                <div class="roadmap-card">
+                    <span class="roadmap-number">02</span>
+                    <div>
+                        <span class="roadmap-status">NEXT</span>
+                        <h3>Expense Tracking</h3>
+                        <p>Add cash, online and other daily expenses.</p>
+                    </div>
+                </div>
+
+                <div class="roadmap-card">
+                    <span class="roadmap-number">03</span>
+                    <div>
+                        <span class="roadmap-status">PLANNED</span>
+                        <h3>Savings Goal</h3>
+                        <p>Set a target and understand how spending affects it.</p>
+                    </div>
+                </div>
+
+                <div class="roadmap-card">
+                    <span class="roadmap-number">04</span>
+                    <div>
+                        <span class="roadmap-status">PLANNED</span>
+                        <h3>Smart Insights</h3>
+                        <p>Understand patterns, alerts and financial changes.</p>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <footer class="dashboard-footer">
+                <span>Finora · Personal financial awareness</span>
+                <span>Not investment advice</span>
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script src="js/dashboard.js"></script>
+
+</body>
+</html>

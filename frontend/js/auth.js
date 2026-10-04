@@ -69,7 +69,7 @@ forms.forEach(function(form) {
 
                 localStorage.setItem("finoraUser", JSON.stringify(data.user));
 
-                alert("Login successful!");
+                window.location.href = "onboarding.html";
 
             } catch (error) {
                 alert("Unable to connect to the server.");
