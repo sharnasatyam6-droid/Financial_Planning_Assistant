@@ -501,3 +501,90 @@ async function loadDashboardGoal() {
 
 
 loadDashboardGoal();
+
+async function loadDashboardAlerts() {
+    if (!user) {
+        return;
+    }
+
+    try {
+        const response = await fetch("/alerts/" + user.id);
+
+        if (!response.ok) {
+            throw new Error("Unable to load alerts");
+        }
+
+        const data = await response.json();
+        const alerts = data.alerts || [];
+
+        const navCount = document.querySelector("#dashboard-alert-count");
+        const countValue = document.querySelector("#dashboard-alert-count-value");
+        const priority = document.querySelector("#dashboard-alert-priority");
+        const highlight = document.querySelector("#dashboard-signal-highlight");
+        const icon = document.querySelector("#dashboard-signal-icon");
+        const label = document.querySelector("#dashboard-signal-label");
+        const title = document.querySelector("#dashboard-signal-title");
+        const message = document.querySelector("#dashboard-signal-message");
+
+        if (navCount) {
+            navCount.textContent = alerts.length > 0 ? alerts.length : "";
+        }
+
+        if (countValue) {
+            countValue.textContent = alerts.length;
+        }
+
+        if (!highlight || !icon || !label || !title || !message) {
+            return;
+        }
+
+        const levelOrder = { critical: 0, warning: 1, info: 2, success: 3 };
+        const mostImportant = alerts.slice().sort(function(a, b) {
+            return levelOrder[a.level] - levelOrder[b.level];
+        })[0];
+
+        highlight.className = "signal-highlight";
+
+        if (!mostImportant) {
+            icon.textContent = "✓";
+            label.textContent = "ON TRACK";
+            title.textContent = "Everything looks on track";
+            message.textContent = "Your recorded spending is currently within the planned range.";
+            if (priority) priority.textContent = "On track";
+            return;
+        }
+
+        highlight.classList.add(mostImportant.level);
+
+        const labels = {
+            critical: "CRITICAL",
+            warning: "NEEDS ATTENTION",
+            info: "INFORMATION",
+            success: "ON TRACK"
+        };
+
+        const icons = { critical: "!", warning: "!", info: "i", success: "✓" };
+
+        icon.textContent = icons[mostImportant.level] || "i";
+        label.textContent = labels[mostImportant.level] || "SIGNAL";
+        title.textContent = mostImportant.title;
+        message.textContent = mostImportant.message;
+
+        if (priority) {
+            priority.textContent = labels[mostImportant.level] || "Information";
+        }
+
+    } catch (error) {
+        const navCount = document.querySelector("#dashboard-alert-count");
+        const countValue = document.querySelector("#dashboard-alert-count-value");
+        const priority = document.querySelector("#dashboard-alert-priority");
+
+        if (navCount) navCount.textContent = "";
+        if (countValue) countValue.textContent = "—";
+        if (priority) priority.textContent = "Unavailable";
+
+        console.log("Unable to load dashboard alerts.");
+    }
+}
+
+loadDashboardAlerts();
