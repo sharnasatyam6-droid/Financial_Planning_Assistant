@@ -1,7 +1,93 @@
 from fastapi import APIRouter, HTTPException
+from pydantic import BaseModel
 from backend.database.database import get_connection
 
 router = APIRouter(prefix="/insights", tags=["Insights"])
+
+
+class SimulationData(BaseModel):
+    user_id: int
+    monthly_reduction: float = 0
+    extra_monthly_saving: float = 0
+
+
+@router.post("/simulate")
+def simulate_financial_change(data: SimulationData):
+    if data.monthly_reduction < 0 or data.extra_monthly_saving < 0:
+        raise HTTPException(status_code=400, detail="Simulation values cannot be negative")
+
+    connection = get_connection()
+
+    profile = connection.execute(
+        "SELECT monthly_income, current_savings, fixed_expenses FROM financial_profiles WHERE user_id = ?",
+        (data.user_id,)
+    ).fetchone()
+
+    goal = connection.execute(
+        "SELECT goal_name, target_amount FROM savings_goals WHERE user_id = ?",
+        (data.user_id,)
+    ).fetchone()
+
+    spending = connection.execute(
+        """
+        SELECT COALESCE(SUM(amount), 0) AS total
+        FROM expenses
+        WHERE user_id = ?
+        AND strftime('%Y-%m', expense_date) = strftime('%Y-%m', 'now')
+        """,
+        (data.user_id,)
+    ).fetchone()
+
+    connection.close()
+
+    if not profile:
+        raise HTTPException(status_code=404, detail="Financial profile not found")
+
+    income = float(profile["monthly_income"])
+    fixed = float(profile["fixed_expenses"])
+    current_savings = float(profile["current_savings"])
+    current_spending = float(spending["total"])
+
+    reduction = min(data.monthly_reduction, current_spending)
+    projected_spending = max(0, current_spending - reduction)
+    projected_capacity = max(
+        0,
+        income - fixed - projected_spending + data.extra_monthly_saving
+    )
+
+    current_capacity = max(0, income - fixed - current_spending)
+    monthly_improvement = projected_capacity - current_capacity
+
+    goal_months = None
+    goal_name = None
+    goal_remaining = None
+
+    if goal:
+        goal_name = goal["goal_name"]
+        target = float(goal["target_amount"])
+        goal_remaining = max(0, target - current_savings)
+
+        if goal_remaining == 0:
+            goal_months = 0
+        elif projected_capacity > 0:
+            goal_months = int(
+                (goal_remaining + projected_capacity - 1) // projected_capacity
+            )
+
+    return {
+        "current_spending": current_spending,
+        "projected_spending": projected_spending,
+        "current_capacity": current_capacity,
+        "projected_capacity": projected_capacity,
+        "monthly_improvement": monthly_improvement,
+        "projected_spending_rate": round(
+            (projected_spending / income) * 100
+        ) if income > 0 else 0,
+        "goal_name": goal_name,
+        "goal_remaining": goal_remaining,
+        "goal_months": goal_months
+    }
+
 
 @router.get("/{user_id}")
 def get_insights(user_id: int):
