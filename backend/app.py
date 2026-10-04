@@ -9,6 +9,7 @@ from backend.routes.profile import router as profile_router
 from backend.routes.expenses import router as expenses_router
 from backend.routes.goals import router as goals_router
 from backend.routes.alerts import router as alerts_router
+from backend.routes.insights import router as insights_router
 
 app = FastAPI(title="Finora API")
 
@@ -19,6 +20,7 @@ app.include_router(profile_router)
 app.include_router(expenses_router)
 app.include_router(goals_router)
 app.include_router(alerts_router)
+app.include_router(insights_router)
 
 
 @app.get("/api")
