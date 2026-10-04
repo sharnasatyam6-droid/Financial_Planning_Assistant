@@ -3540,3 +3540,319 @@ input {
     }
 
 }
+
+/* ================================
+   FINORA ALERTS
+================================ */
+
+.alerts-summary-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.alert-total-card,
+.alert-monitor-card {
+    box-sizing: border-box;
+    min-height: 130px;
+    padding: 22px;
+    border: 1px solid #e4e5e7;
+    border-radius: 16px;
+    background: #ffffff;
+}
+
+.alert-total-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.alert-total-icon {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 13px;
+    background: #fff2d8;
+    color: #a96d00;
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.alert-total-card span {
+    display: block;
+    color: #999ca2;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+}
+
+.alert-total-card strong {
+    display: block;
+    margin-top: 5px;
+    font-size: 29px;
+    letter-spacing: -1px;
+}
+
+.alert-monitor-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #1b1d20;
+    border-color: #1b1d20;
+    color: #ffffff;
+}
+
+.alert-monitor-icon {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 11px;
+    background: rgba(238, 172, 49, 0.13);
+    color: #eeac31;
+}
+
+.alert-monitor-card .panel-label {
+    color: #777c83;
+}
+
+.alert-monitor-card h2 {
+    margin: 5px 0 5px;
+    font-size: 17px;
+}
+
+.alert-monitor-card > div:last-child p:last-child {
+    margin: 0;
+    max-width: 680px;
+    color: #999da4;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.alerts-panel {
+    margin-bottom: 18px;
+}
+
+.alerts-panel-heading {
+    align-items: center;
+}
+
+.alerts-refresh-button {
+    border: 1px solid #e1e2e5;
+    background: #ffffff;
+    color: #4d5055;
+    border-radius: 9px;
+    padding: 9px 14px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.alerts-refresh-button:hover {
+    border-color: #eeac31;
+    color: #8a610e;
+    background: #fffaf0;
+}
+
+.alerts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    margin-top: 22px;
+}
+
+.financial-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 17px;
+    border: 1px solid #e6e7e9;
+    border-radius: 13px;
+    background: #fafafa;
+}
+
+.financial-alert-icon {
+    width: 39px;
+    height: 39px;
+    min-width: 39px;
+    display: grid;
+    place-items: center;
+    border-radius: 11px;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.financial-alert-content {
+    min-width: 0;
+    flex: 1;
+}
+
+.financial-alert-top {
+    margin-bottom: 4px;
+}
+
+.financial-alert-level {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.financial-alert h3 {
+    margin: 0 0 5px;
+    font-size: 14px;
+    letter-spacing: -0.1px;
+}
+
+.financial-alert p {
+    margin: 0;
+    color: #777b82;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.financial-alert.warning {
+    border-left: 3px solid #e0a12a;
+}
+
+.financial-alert.warning .financial-alert-icon {
+    background: #fff1d3;
+    color: #a86d00;
+}
+
+.financial-alert.warning .financial-alert-level {
+    color: #a86d00;
+}
+
+.financial-alert.critical {
+    border-left: 3px solid #d75a52;
+}
+
+.financial-alert.critical .financial-alert-icon {
+    background: #fde9e7;
+    color: #b43e37;
+}
+
+.financial-alert.critical .financial-alert-level {
+    color: #b43e37;
+}
+
+.financial-alert.info {
+    border-left: 3px solid #6878a7;
+}
+
+.financial-alert.info .financial-alert-icon {
+    background: #edf0f7;
+    color: #56688e;
+}
+
+.financial-alert.info .financial-alert-level {
+    color: #56688e;
+}
+
+.financial-alert.success {
+    border-left: 3px solid #4f956d;
+}
+
+.financial-alert.success .financial-alert-icon {
+    background: #e8f4ec;
+    color: #397653;
+}
+
+.financial-alert.success .financial-alert-level {
+    color: #397653;
+}
+
+.alerts-loading,
+.alerts-error {
+    padding: 32px 20px;
+    border: 1px dashed #dfe1e4;
+    border-radius: 13px;
+    background: #fafafa;
+    color: #85888e;
+    text-align: center;
+    font-size: 12px;
+}
+
+.alerts-error strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #33363a;
+}
+
+.alerts-error p {
+    margin: 0;
+    color: #85888e;
+}
+
+.alert-awareness-panel {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 18px;
+    background: #f1f3f0;
+    border-color: #e2e5e1;
+}
+
+.alert-awareness-icon {
+    width: 31px;
+    height: 31px;
+    min-width: 31px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #e2e6df;
+    color: #687260;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.alert-awareness-panel h2 {
+    margin: 5px 0 5px;
+    font-size: 14px;
+}
+
+.alert-awareness-panel p:last-child {
+    margin: 0;
+    max-width: 850px;
+    color: #777d76;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.nav-alert-count {
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    margin-left: auto;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #eeac31;
+    color: #17191c;
+    font-size: 9px;
+    font-weight: 800;
+}
+
+@media (max-width: 850px) {
+    .alerts-summary-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 750px) {
+    .alerts-panel-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .alerts-refresh-button {
+        width: 100%;
+    }
+}
