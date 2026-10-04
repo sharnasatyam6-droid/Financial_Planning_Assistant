@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insights - Finora</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dashboard-page">
+<aside class="finora-sidebar">
+<div class="sidebar-top">
+<a href="dashboard.html" class="finora-brand"><span class="brand-mark">F</span><span>Finora</span></a>
+<div class="sidebar-section-title">WORKSPACE</div>
+<nav class="finora-nav">
+<a href="dashboard.html" class="finora-nav-link"><span class="nav-icon">⌂</span><span>Overview</span></a>
+<a href="expenses.html" class="finora-nav-link"><span class="nav-icon">↗</span><span>Expenses</span></a>
+<a href="goals.html" class="finora-nav-link"><span class="nav-icon">◎</span><span>Goals</span></a>
+<a href="alerts.html" class="finora-nav-link"><span class="nav-icon">!</span><span>Alerts</span></a>
+<a href="#" class="finora-nav-link coming-link"><span class="nav-icon">▤</span><span>Budget</span><span class="nav-soon">Soon</span></a>
+<a href="insights.html" class="finora-nav-link active"><span class="nav-icon">◌</span><span>Insights</span></a>
+</nav>
+</div>
+<div class="sidebar-bottom">
+<div class="sidebar-note"><span class="sidebar-note-dot"></span><div><strong>Financial awareness</strong><p>Plan smarter. Spend clearer.</p></div></div>
+<button id="logout-button" class="finora-logout"><span>↪</span>Logout</button>
+</div>
+</aside>
+<main class="finora-main">
+<header class="finora-header">
+<div class="header-left">
+<p class="header-eyebrow">FINORA INTELLIGENCE</p>
+<h1>Your financial insights</h1>
+<p class="header-description">Clear explanations built from your recorded financial activity.</p>
+</div>
+<div class="header-right">
+<div class="today-badge"><span class="today-dot"></span><span id="today-date">Today</span></div>
+<div class="profile-chip"><div class="profile-avatar" id="profile-avatar">U</div><div><strong id="profile-name">User</strong><span>Personal account</span></div></div>
+</div>
+</header>
+
+<section class="insight-hero-grid">
+<div class="dashboard-panel intelligence-score-card">
+<div class="panel-top"><div><p class="panel-label">FINANCIAL SIGNAL SCORE</p><h2 id="insight-health">Analyzing</h2></div><span class="intelligence-spark">✦</span></div>
+<div class="intelligence-score"><strong id="financial-score">—</strong><span>/100</span></div>
+<div class="intelligence-track"><div id="financial-score-fill"></div></div>
+<p id="health-text">Finora is analyzing your current financial activity.</p>
+</div>
+<div class="dashboard-panel intelligence-flow-card">
+<p class="panel-label">CURRENT PICTURE</p>
+<div class="intelligence-flow-row"><span>Monthly income</span><strong id="insight-income">₹0</strong></div>
+<div class="intelligence-flow-row"><span>Recorded spending</span><strong id="insight-spending">₹0</strong></div>
+<div class="intelligence-flow-row"><span>Spending rate</span><strong id="insight-rate">0%</strong></div>
+<div class="intelligence-flow-row"><span>Available capacity</span><strong id="insight-capacity">₹0</strong></div>
+</div>
+</section>
+
+<section class="dashboard-panel intelligence-insights-panel">
+<div class="panel-top"><div><p class="panel-label">WHAT FINORA SEES</p><h2>Patterns worth knowing</h2><p class="panel-description">Explanations generated from your recorded data.</p></div></div>
+<div id="insights-list" class="intelligence-insights-list"><div class="insight-loading">Reading your financial activity...</div></div>
+</section>
+
+<section class="dashboard-panel intelligence-disclaimer">
+<div class="alert-awareness-icon">i</div>
+<div><p class="panel-label">AWARENESS FIRST</p><h2>Understand your money before making decisions.</h2><p>Finora provides financial awareness and planning insights from the information you provide. It does not provide investment, securities, loan or other regulated financial advice.</p></div>
+</section>
+
+<footer class="finora-footer"><span>© 2026 Finora</span><span>Financial awareness, not investment advice</span></footer>
+</main>
+<script src="js/insights.js"></script>
+</body>
+</html>
