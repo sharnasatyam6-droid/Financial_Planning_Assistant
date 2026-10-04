@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
+from datetime import date
 from backend.database.database import get_connection
 
 router = APIRouter(prefix="/expenses", tags=["Expenses"])
@@ -17,11 +18,24 @@ class ExpenseData(BaseModel):
 
 @router.post("/add")
 def add_expense(data: ExpenseData):
+    allowed_categories = ["Food", "Transport", "Education", "Shopping", "Bills", "Entertainment", "Health", "Other"]
+
     if data.amount <= 0:
         raise HTTPException(status_code=400, detail="Amount must be greater than 0")
 
+    if data.category not in allowed_categories:
+        raise HTTPException(status_code=400, detail="Invalid expense category")
+
     if data.payment_mode not in ["cash", "online"]:
         raise HTTPException(status_code=400, detail="Invalid payment mode")
+
+    if not data.description.strip():
+        raise HTTPException(status_code=400, detail="Description is required")
+
+    try:
+        date.fromisoformat(data.expense_date)
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Enter a valid expense date")
 
     if data.payment_mode == "online" and not data.transaction_id.strip():
         raise HTTPException(
@@ -40,6 +54,16 @@ def add_expense(data: ExpenseData):
         connection.close()
         raise HTTPException(status_code=404, detail="User not found")
 
+    if data.payment_mode == "online":
+        duplicate = connection.execute(
+            "SELECT id FROM expenses WHERE user_id = ? AND transaction_id = ? LIMIT 1",
+            (data.user_id, data.transaction_id.strip())
+        ).fetchone()
+
+        if duplicate:
+            connection.close()
+            raise HTTPException(status_code=409, detail="This transaction ID is already recorded")
+
     connection.execute(
         """
         INSERT INTO expenses
@@ -50,9 +74,9 @@ def add_expense(data: ExpenseData):
             data.user_id,
             data.amount,
             data.category,
-            data.description,
+            data.description.strip(),
             data.payment_mode,
-            data.transaction_id,
+            data.transaction_id.strip(),
             data.expense_date
         )
     )
@@ -126,6 +150,12 @@ def import_expenses(data: list[ImportExpense]):
         if not expense.description.strip() or not expense.expense_date:
             connection.close()
             raise HTTPException(status_code=400, detail="Imported expenses need a description and date")
+
+        try:
+            date.fromisoformat(expense.expense_date)
+        except ValueError:
+            connection.close()
+            raise HTTPException(status_code=400, detail="Imported expenses need valid dates")
 
         if expense.payment_mode == "online" and not expense.transaction_id.strip():
             connection.close()
