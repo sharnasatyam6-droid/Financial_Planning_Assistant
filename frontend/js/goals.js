@@ -77,8 +77,6 @@ async function loadGoal() {
         document.querySelector("#progress-goal-name").textContent =
             goal.goal_name;
 
-        calculateBudget(goal);
-
     } catch (error) {
 
         console.log("No savings goal found.");
@@ -126,7 +124,7 @@ function calculateBudget(plan) {
         `${plan.progress}%`;
 
     document.querySelector("#monthly-spending").textContent =
-    formatMoney(plan.monthly_spending);
+        formatMoney(plan.monthly_spending);
 
     document.querySelector("#remaining-budget").textContent =
         formatMoney(plan.remaining_spending_budget);
@@ -139,7 +137,7 @@ function calculateBudget(plan) {
     budgetStatus.className =
         "goal-budget-status " +
         plan.budget_status.toLowerCase().replace(" ", "-");
-    }
+}
 
 async function loadGoalPlan() {
 
@@ -196,7 +194,7 @@ document.querySelector("#goal-form").addEventListener(
 
             alert("Savings goal saved successfully!");
 
-            calculateBudget(goal);
+            await loadGoalPlan();
 
         } catch (error) {
 
