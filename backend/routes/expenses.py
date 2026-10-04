@@ -322,7 +322,7 @@ def get_monthly_trend(user_id: int):
         FROM expenses
         WHERE user_id = ?
         GROUP BY strftime('%Y-%m', expense_date)
-        ORDER BY month ASC
+        ORDER BY month DESC
         LIMIT 6
         """,
         (user_id,)
