@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expenses - Finora</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dashboard-page">
+
+    <aside class="sidebar">
+        <div class="sidebar-brand">Finora</div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html">Overview</a>
+            <a href="expenses.html" class="active">Expenses</a>
+            <a href="#" class="coming-link">Goals</a>
+            <a href="#" class="coming-link">Budget</a>
+            <a href="#" class="coming-link">Insights</a>
+        </nav>
+
+        <button id="logout-button" class="logout-button">Logout</button>
+    </aside>
+
+    <main class="dashboard-main">
+
+        <header class="dashboard-header">
+            <div>
+                <p class="dashboard-label">EXPENSE TRACKING</p>
+                <h1>Manage your expenses</h1>
+                <p class="dashboard-subtitle">
+                    Track where your money goes and keep your spending organized.
+                </p>
+            </div>
+
+            <div class="profile-chip">
+                <div class="profile-avatar" id="profile-avatar">U</div>
+                <span id="profile-name">User</span>
+            </div>
+        </header>
+
+        <section class="expense-layout">
+
+            <div class="expense-form-card">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Add Expense</h2>
+                        <p>Record a new expense.</p>
+                    </div>
+                </div>
+
+                <form id="expense-form">
+
+                    <div class="input-group">
+                        <label for="amount">Amount</label>
+                        <input
+                            type="number"
+                            id="amount"
+                            placeholder="Enter amount"
+                            min="1"
+                            required
+                        >
+                    </div>
+
+                    <div class="input-group">
+                        <label for="category">Category</label>
+                        <select id="category" required>
+                            <option value="">Select category</option>
+                            <option value="Food">Food</option>
+                            <option value="Transport">Transport</option>
+                            <option value="Education">Education</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Bills">Bills</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Health">Health</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="description">Description</label>
+                        <input
+                            type="text"
+                            id="description"
+                            placeholder="What did you spend on?"
+                            required
+                        >
+                    </div>
+
+                    <div class="input-group">
+                        <label for="payment-mode">Payment Mode</label>
+                        <select id="payment-mode" required>
+                            <option value="">Select payment mode</option>
+                            <option value="cash">Cash</option>
+                            <option value="online">Online</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group" id="transaction-group">
+                        <label for="transaction-id">Transaction ID</label>
+                        <input
+                            type="text"
+                            id="transaction-id"
+                            placeholder="Enter transaction/reference ID"
+                        >
+                    </div>
+
+                    <div class="input-group">
+                        <label for="expense-date">Date</label>
+                        <input type="date" id="expense-date" required>
+                    </div>
+
+                    <button type="submit" class="auth-button">
+                        Add Expense
+                    </button>
+
+                </form>
+            </div>
+
+            <div class="expense-list-card">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Recent Expenses</h2>
+                        <p>Your recorded transactions.</p>
+                    </div>
+                </div>
+
+                <div id="expense-list" class="expense-list">
+                    <p class="empty-expenses">Loading expenses...</p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="js/expenses.js"></script>
+</body>
+</html>

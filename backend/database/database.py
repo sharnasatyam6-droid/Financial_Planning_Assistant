@@ -35,5 +35,20 @@ def create_tables():
         )
     """)
 
+    connection.execute("""
+        CREATE TABLE IF NOT EXISTS expenses (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL,
+            amount REAL NOT NULL,
+            category TEXT NOT NULL,
+            description TEXT NOT NULL,
+            payment_mode TEXT NOT NULL,
+            transaction_id TEXT,
+            expense_date TEXT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users(id)
+        )
+    """)
+
     connection.commit()
     connection.close()

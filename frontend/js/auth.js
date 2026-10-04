@@ -69,7 +69,18 @@ forms.forEach(function(form) {
 
                 localStorage.setItem("finoraUser", JSON.stringify(data.user));
 
-                window.location.href = "onboarding.html";
+                try {
+                    const profileResponse = await fetch(`/profile/${data.user.id}`);
+
+                    if (profileResponse.ok) {
+                        window.location.href = "dashboard.html";
+                    } else {
+                        window.location.href = "onboarding.html";
+                    }
+
+                } catch (error) {
+                    window.location.href = "onboarding.html";
+                }
 
             } catch (error) {
                 alert("Unable to connect to the server.");

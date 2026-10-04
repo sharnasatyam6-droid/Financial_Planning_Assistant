@@ -69,6 +69,12 @@ async function loadProfile() {
             ? Math.max(0, Math.min(100, Math.round((available / income) * 100)))
             : 0;
 
+        const progressBar = document.querySelector("#position-progress-fill");
+
+        if (progressBar) {
+            progressBar.style.width = `${percentage}%`;
+        }
+
         document.querySelector("#remaining-percent").textContent =
             `${percentage}%`;
 
@@ -115,3 +121,326 @@ document.querySelectorAll(".coming-link").forEach(function(link) {
 });
 
 loadProfile();
+
+async function loadExpenseSummary() {
+    if (!user) {
+        return;
+    }
+
+    try {
+        const response = await fetch(`/expenses/summary/${user.id}`);
+
+        if (!response.ok) {
+            return;
+        }
+
+        const data = await response.json();
+
+        document.querySelector("#tracked-expenses-value").textContent =
+            `₹${Number(data.total_expenses).toLocaleString("en-IN")}`;
+
+        const count = Number(data.expense_count);
+
+        document.querySelector("#expense-count-text").textContent =
+            `${count} ${count === 1 ? "expense" : "expenses"} recorded`;
+
+    } catch (error) {
+        console.log("Unable to load expense summary.");
+    }
+}
+
+loadExpenseSummary();
+
+let spendingChart;
+
+async function loadCategorySummary() {
+    if (!user) {
+        return;
+    }
+
+    try {
+        const response = await fetch(`/expenses/category-summary/${user.id}`);
+
+        if (!response.ok) {
+            return;
+        }
+
+        const data = await response.json();
+
+        const categorySummary = document.querySelector("#category-summary");
+
+        if (!data.categories || data.categories.length === 0) {
+            categorySummary.innerHTML =
+                "<p>No spending recorded yet.</p>";
+            return;
+        }
+
+        categorySummary.innerHTML = "";
+
+        data.categories.forEach(function(item) {
+            const row = document.createElement("div");
+            row.className = "category-row";
+
+            row.innerHTML = `
+                <div>
+                    <span>${item.category}</span>
+                </div>
+                <strong>₹${Number(item.total).toLocaleString("en-IN")}</strong>
+            `;
+
+            categorySummary.appendChild(row);
+        });
+
+        const labels = data.categories.map(function(item) {
+            return item.category;
+        });
+
+        const values = data.categories.map(function(item) {
+            return Number(item.total);
+        });
+
+        const chart = document.querySelector("#spending-chart");
+
+        if (spendingChart) {
+            spendingChart.destroy();
+        }
+
+        spendingChart = new Chart(chart, {
+            type: "doughnut",
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: values
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: "bottom"
+                    }
+                }
+            }
+        });
+
+    } catch (error) {
+        console.log("Unable to load category summary.");
+    }
+}
+
+loadCategorySummary();
+
+async function loadRecentExpenses() {
+    if (!user) {
+        return;
+    }
+
+    try {
+        const response = await fetch(`/expenses/${user.id}`);
+
+        if (!response.ok) {
+            return;
+        }
+
+        const data = await response.json();
+        const recentExpenses = document.querySelector("#recent-expenses");
+
+        if (!data.expenses || data.expenses.length === 0) {
+            recentExpenses.innerHTML =
+                '<p class="empty-expenses">No expenses recorded yet.</p>';
+            return;
+        }
+
+        recentExpenses.innerHTML = "";
+
+        data.expenses.slice(0, 5).forEach(function(expense) {
+
+            const item = document.createElement("div");
+            item.className = "recent-expense-item";
+
+            item.innerHTML = `
+                <div>
+                    <h3>${expense.description}</h3>
+                    <p>${expense.category} • ${expense.payment_mode}</p>
+                </div>
+
+                <div class="recent-expense-right">
+                    <strong>₹${Number(expense.amount).toLocaleString("en-IN")}</strong>
+                    <span>${expense.expense_date}</span>
+                </div>
+            `;
+
+            recentExpenses.appendChild(item);
+        });
+
+    } catch (error) {
+        console.log("Unable to load recent expenses.");
+    }
+}
+
+loadRecentExpenses();
+
+const todayDate = document.querySelector("#today-date");
+
+if (todayDate) {
+    todayDate.textContent = new Date().toLocaleDateString("en-IN", {
+        day: "numeric",
+        month: "short",
+        year: "numeric"
+    });
+}
+
+async function loadFinancialAnalytics() {
+    if (!user) {
+        return;
+    }
+
+    try {
+        const response = await fetch(`/expenses/analytics/${user.id}`);
+
+        if (!response.ok) {
+            return;
+        }
+
+        const data = await response.json();
+
+        const monthlySpending = Number(data.total_spending);
+        const transactionCount = Number(data.transaction_count);
+        const topCategory = data.top_category;
+        const topCategoryAmount = Number(data.top_category_amount);
+
+        document.querySelector("#monthly-spending-value").textContent =
+            `₹${monthlySpending.toLocaleString("en-IN")}`;
+
+        document.querySelector("#top-category-value").textContent =
+            topCategory || "No data";
+
+        document.querySelector("#top-category-amount").textContent =
+            `₹${topCategoryAmount.toLocaleString("en-IN")} spent`;
+
+        const incomeElement = document.querySelector("#income-value");
+        const income = Number(
+            incomeElement.textContent.replace(/[₹,]/g, "")
+        );
+
+        let spendingRate = 0;
+
+        if (income > 0) {
+            spendingRate = Math.round((monthlySpending / income) * 100);
+        }
+
+        document.querySelector("#spending-rate-value").textContent =
+            `${spendingRate}%`;
+
+        let health = "Healthy";
+        let healthText = "Your spending is currently within a comfortable range.";
+
+        if (spendingRate > 80) {
+            health = "Needs Attention";
+            healthText = "Your spending is taking up most of your monthly income.";
+        } else if (spendingRate > 60) {
+            health = "Moderate";
+            healthText = "Keep an eye on your spending to protect your savings.";
+        }
+
+        document.querySelector("#financial-health-value").textContent = health;
+        document.querySelector("#financial-health-text").textContent = healthText;
+
+        let insight = "";
+
+        if (transactionCount === 0) {
+            insight = "Start recording your expenses to unlock personalized spending insights.";
+        } else if (spendingRate <= 40) {
+            insight = `Your recorded spending is ${spendingRate}% of your monthly income. You currently have a relatively comfortable spending level.`;
+        } else if (spendingRate <= 60) {
+            insight = `You have used ${spendingRate}% of your monthly income in recorded spending. Monitoring your discretionary expenses can help maintain your financial balance.`;
+        } else if (spendingRate <= 80) {
+            insight = `Your recorded spending has reached ${spendingRate}% of your monthly income. Consider reviewing your ${topCategory || "top spending"} expenses.`;
+        } else {
+            insight = `Your recorded spending is ${spendingRate}% of your monthly income. Reviewing your largest spending categories may help you protect your savings.`;
+        }
+
+        document.querySelector("#financial-insight").textContent = insight;
+
+    } catch (error) {
+        console.log("Unable to load financial analytics.");
+    }
+}
+
+loadFinancialAnalytics();
+
+let spendingTrendChart;
+
+async function loadSpendingTrend() {
+    if (!user) {
+        return;
+    }
+
+    try {
+        const response = await fetch(`/expenses/monthly-trend/${user.id}`);
+
+        if (!response.ok) {
+            return;
+        }
+
+        const data = await response.json();
+
+        const labels = data.trend.map(function(item) {
+            const parts = item.month.split("-");
+            const date = new Date(parts[0], Number(parts[1]) - 1);
+
+            return date.toLocaleDateString("en-IN", {
+                month: "short",
+                year: "numeric"
+            });
+        });
+
+        const values = data.trend.map(function(item) {
+            return Number(item.total);
+        });
+
+        const chart = document.querySelector("#spending-trend-chart");
+
+        if (spendingTrendChart) {
+            spendingTrendChart.destroy();
+        }
+
+        spendingTrendChart = new Chart(chart, {
+            type: "line",
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: "Monthly Spending",
+                    data: values,
+                    tension: 0.35,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return "₹" + Number(value).toLocaleString("en-IN");
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+    } catch (error) {
+        console.log("Unable to load spending trend.");
+    }
+}
+
+loadSpendingTrend();
