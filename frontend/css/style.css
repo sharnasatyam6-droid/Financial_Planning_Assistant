@@ -5658,3 +5658,186 @@ body::after {
         animation: none;
     }
 }
+
+
+/* Goal and budget readability fixes */
+.goal-stat {
+    border-bottom-color: #e7e9ee;
+}
+
+.goal-stat strong,
+.dashboard-goal-stats strong {
+    color: #101828;
+    opacity: 1;
+}
+
+.goal-stat span,
+.dashboard-goal-stats span {
+    color: #667085;
+}
+
+.goal-budget-status.healthy,
+.dashboard-budget-status.healthy {
+    background: #e8f4f0;
+    color: #16845c;
+}
+
+.goal-budget-status.near-limit,
+.dashboard-budget-status.near-limit {
+    background: #fff7e6;
+    color: #b54708;
+}
+
+.goal-budget-status.over-budget,
+.dashboard-budget-status.over-budget {
+    background: #fff0f0;
+    color: #b42318;
+}
+
+.budget-page .finora-header {
+    margin-bottom: 28px;
+}
+
+.budget-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 30px;
+    margin-bottom: 18px;
+}
+
+.budget-hero h2 {
+    margin-top: 8px;
+    font-family: "Manrope", sans-serif;
+    font-size: clamp(32px, 4vw, 48px);
+    letter-spacing: -1.5px;
+}
+
+.budget-hero p:not(.panel-label) {
+    margin-top: 8px;
+    color: #667085;
+}
+
+.budget-hero-side {
+    min-width: 150px;
+    padding: 18px 20px;
+    border: 1px solid #e7e9ee;
+    border-radius: 14px;
+    text-align: right;
+    background: #fafbfc;
+}
+
+.budget-hero-side span {
+    display: block;
+    color: #667085;
+    font-size: 12px;
+}
+
+.budget-hero-side strong {
+    display: block;
+    margin-top: 5px;
+    color: #176b5b;
+    font-family: "Manrope", sans-serif;
+    font-size: 26px;
+}
+
+.budget-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+.budget-card {
+    padding: 26px;
+}
+
+.budget-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 17px 0;
+    border-bottom: 1px solid #e7e9ee;
+}
+
+.budget-row span {
+    color: #667085;
+}
+
+.budget-row strong {
+    color: #101828;
+}
+
+.budget-row.emphasis strong {
+    color: #176b5b;
+}
+
+.budget-progress-track {
+    height: 10px;
+    margin-top: 24px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #e8ecef;
+}
+
+.budget-progress-fill {
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: #176b5b;
+    transition: width .4s ease;
+}
+
+.budget-small {
+    margin-top: 10px;
+    color: #667085;
+    font-size: 12px;
+}
+
+.budget-goal-panel {
+    padding: 26px;
+}
+
+.budget-goal-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.budget-goal-grid > div {
+    padding: 18px;
+    border: 1px solid #e7e9ee;
+    border-radius: 12px;
+    background: #fafbfc;
+}
+
+.budget-goal-grid span {
+    display: block;
+    color: #667085;
+    font-size: 12px;
+}
+
+.budget-goal-grid strong {
+    display: block;
+    margin-top: 7px;
+    color: #101828;
+    font-family: "Manrope", sans-serif;
+}
+
+@media (max-width: 900px) {
+    .budget-grid,
+    .budget-goal-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .budget-hero {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .budget-hero-side {
+        width: 100%;
+        text-align: left;
+    }
+}
