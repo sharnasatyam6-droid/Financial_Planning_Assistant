@@ -6615,3 +6615,372 @@ body:not(.dashboard-page) .footer {
         justify-content: space-between;
     }
 }
+
+
+/* =========================================================
+   FINORA // FINAL PRODUCT POLISH
+   System-wide visual language for the command center.
+========================================================= */
+
+.dashboard-page::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: .42;
+    background-image:
+        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: linear-gradient(to bottom, black, transparent 82%);
+}
+
+.dashboard-page .finora-sidebar,
+.dashboard-page .finora-main {
+    position: relative;
+    z-index: 1;
+}
+
+.dashboard-page .finora-main {
+    padding-top: 34px;
+}
+
+.dashboard-page .finora-header {
+    position: relative;
+    padding-bottom: 28px;
+}
+
+.dashboard-page .finora-header::after {
+    content: "SYSTEM ONLINE";
+    position: absolute;
+    right: 0;
+    bottom: 9px;
+    color: #505850;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: .22em;
+}
+
+.dashboard-page .finora-header::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -34px;
+    width: 70px;
+    height: 2px;
+    background: var(--fx-acid);
+    box-shadow: 12px 0 0 rgba(216,255,85,.22), 24px 0 0 rgba(216,255,85,.08);
+}
+
+.dashboard-page .financial-summary {
+    gap: 12px;
+}
+
+.dashboard-page .money-card {
+    min-height: 150px;
+    padding: 22px;
+    transition: transform .28s ease, border-color .28s ease, background .28s ease;
+}
+
+.dashboard-page .money-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(216,255,85,.18);
+    background:
+        linear-gradient(145deg, rgba(31,36,30,.98), rgba(17,20,17,.98));
+}
+
+.dashboard-page .money-card:first-child {
+    border-color: rgba(216,255,85,.2);
+}
+
+.dashboard-page .money-card h2 {
+    font-size: 30px;
+}
+
+.dashboard-page .dashboard-grid {
+    gap: 12px;
+}
+
+.dashboard-page .dashboard-panel {
+    box-shadow: 0 25px 70px rgba(0,0,0,.19);
+    transition: border-color .3s ease, transform .3s ease;
+}
+
+.dashboard-page .dashboard-panel:hover {
+    border-color: rgba(255,255,255,.13);
+}
+
+.dashboard-page .dashboard-panel .panel-top {
+    position: relative;
+}
+
+.dashboard-page .dashboard-panel .panel-top::after {
+    content: "↗";
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #414941;
+    font-size: 12px;
+}
+
+.dashboard-page .position-panel {
+    background:
+        radial-gradient(circle at 8% 100%, rgba(114,232,213,.08), transparent 30%),
+        linear-gradient(145deg, #191d19, #101310);
+}
+
+.dashboard-page .position-number strong {
+    font-size: clamp(34px, 4vw, 52px);
+    letter-spacing: -3px;
+}
+
+.dashboard-page .position-breakdown > div {
+    border-color: rgba(255,255,255,.07);
+}
+
+.dashboard-page .priority-panel {
+    min-height: 100%;
+}
+
+.dashboard-page .priority-heading,
+.dashboard-page #priority-heading {
+    color: white;
+    font-family: "Manrope", sans-serif;
+    letter-spacing: -1.5px;
+}
+
+.dashboard-page .dashboard-goal-panel {
+    background:
+        radial-gradient(circle at 100% 0%, rgba(216,255,85,.08), transparent 32%),
+        #111411;
+}
+
+.dashboard-page .goal-header strong,
+.dashboard-page .goal-value,
+.dashboard-page .goal-progress-value {
+    color: white;
+}
+
+.dashboard-page .goal-progress-fill {
+    box-shadow: 0 0 18px rgba(216,255,85,.2);
+}
+
+.dashboard-page .dashboard-chart-panel {
+    background:
+        radial-gradient(circle at 0% 100%, rgba(114,232,213,.07), transparent 30%),
+        #111411;
+}
+
+.dashboard-page .dashboard-alert-panel {
+    background:
+        radial-gradient(circle at 100% 0%, rgba(255,114,94,.08), transparent 30%),
+        #111411;
+}
+
+.dashboard-page .alert-item,
+.dashboard-page .expense-row {
+    position: relative;
+    transition: background .2s ease, padding-left .2s ease;
+}
+
+.dashboard-page .alert-item:hover,
+.dashboard-page .expense-row:hover {
+    padding-left: 10px;
+}
+
+.dashboard-page .alert-item::before,
+.dashboard-page .expense-row::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 17px;
+    bottom: 17px;
+    width: 2px;
+    background: transparent;
+    border-radius: 2px;
+    transition: background .2s ease;
+}
+
+.dashboard-page .alert-item:hover::before,
+.dashboard-page .expense-row:hover::before {
+    background: var(--fx-acid);
+}
+
+.dashboard-page .finora-footer,
+.dashboard-page .finora-page-footer {
+    position: relative;
+    z-index: 1;
+    padding-top: 22px;
+    margin-top: 34px;
+}
+
+.dashboard-page .finora-footer::before,
+.dashboard-page .finora-page-footer::before {
+    content: "FINORA / PERSONAL FINANCIAL OPERATING SYSTEM";
+    display: block;
+    margin-bottom: 14px;
+    color: #454d45;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: .2em;
+}
+
+/* Goals: make the goal feel like the centre of the product. */
+.dashboard-page .goal-hero,
+.dashboard-page .goals-hero {
+    background:
+        radial-gradient(circle at 85% 20%, rgba(216,255,85,.12), transparent 28%),
+        linear-gradient(145deg, #191d18, #101310);
+    border-color: rgba(216,255,85,.12);
+}
+
+.dashboard-page .goal-card,
+.dashboard-page .goal-form-panel,
+.dashboard-page .goal-plan-panel {
+    border-radius: var(--fx-radius);
+}
+
+/* Alerts: severity should be readable without turning the page into a warning board. */
+.dashboard-page .alert-total-card,
+.dashboard-page .alert-monitor-card {
+    background:
+        linear-gradient(145deg, #191d18, #111411);
+    border-color: rgba(255,255,255,.08);
+    box-shadow: 0 25px 70px rgba(0,0,0,.18);
+}
+
+.dashboard-page .alert-total-icon {
+    background: rgba(255,114,94,.1);
+    color: var(--fx-coral);
+    border-color: rgba(255,114,94,.16);
+}
+
+.dashboard-page .alerts-panel {
+    background: #111411;
+}
+
+.dashboard-page .alerts-refresh-button {
+    border-radius: 999px;
+}
+
+/* Expenses: turn data entry into a focused workstation. */
+.dashboard-page .expense-entry-panel,
+.dashboard-page .expense-import-panel,
+.dashboard-page .receipt-intelligence-panel,
+.dashboard-page .recent-expenses-panel {
+    background:
+        linear-gradient(145deg, #191d18, #101310);
+}
+
+.dashboard-page .expense-primary-button {
+    min-height: 46px;
+}
+
+.dashboard-page .import-dropzone,
+.dashboard-page .receipt-dropzone {
+    min-height: 150px;
+    transition: .25s ease;
+}
+
+.dashboard-page .import-dropzone:hover,
+.dashboard-page .receipt-dropzone:hover {
+    border-color: rgba(216,255,85,.3);
+    background: rgba(216,255,85,.035);
+    transform: translateY(-2px);
+}
+
+.dashboard-page .receipt-preview-wrap {
+    border-color: rgba(255,255,255,.08);
+}
+
+/* Insights: make the score feel like an instrument, not a number card. */
+.dashboard-page .insight-hero-grid {
+    position: relative;
+}
+
+.dashboard-page .intelligence-score {
+    position: relative;
+    min-height: 130px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.dashboard-page .intelligence-score::before {
+    content: "SIGNAL";
+    position: absolute;
+    right: 0;
+    top: 8px;
+    color: #3f473f;
+    font-size: 8px;
+    letter-spacing: .22em;
+}
+
+.dashboard-page .intelligence-flow-card {
+    background:
+        radial-gradient(circle at 100% 0%, rgba(114,232,213,.08), transparent 34%),
+        #111411;
+}
+
+.dashboard-page .what-if-panel {
+    border-color: rgba(216,255,85,.11);
+}
+
+.dashboard-page .what-if-panel::after {
+    content: "SCENARIO ENGINE";
+    position: absolute;
+    right: 25px;
+    bottom: 20px;
+    color: #3f473f;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: .2em;
+}
+
+/* Shared micro-details */
+.dashboard-page .nav-alert-count:not(:empty) {
+    background: var(--fx-coral);
+    color: #fff;
+    border: 2px solid #0a0c0a;
+}
+
+.dashboard-page .status-dot,
+.dashboard-page .today-dot {
+    animation: finoraPulse 2.8s ease-in-out infinite;
+}
+
+@keyframes finoraPulse {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(216,255,85,.06); }
+    50% { box-shadow: 0 0 0 7px rgba(216,255,85,.13); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dashboard-page .status-dot,
+    .dashboard-page .today-dot {
+        animation: none;
+    }
+
+    .dashboard-page .money-card,
+    .dashboard-page .dashboard-panel,
+    .dashboard-page .import-dropzone,
+    .dashboard-page .receipt-dropzone {
+        transition: none;
+    }
+}
+
+@media (max-width: 650px) {
+    .dashboard-page .finora-header::after,
+    .dashboard-page .finora-footer::before,
+    .dashboard-page .finora-page-footer::before {
+        display: none;
+    }
+
+    .dashboard-page .finora-header::before {
+        top: -22px;
+    }
+
+    .dashboard-page .finora-main {
+        padding-top: 24px;
+    }
+}
