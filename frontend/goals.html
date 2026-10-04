@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Goals - Finora</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="dashboard-page">
+
+    <aside class="finora-sidebar">
+
+        <div class="sidebar-top">
+
+            <a href="dashboard.html" class="finora-brand">
+                <span class="brand-mark">F</span>
+                <span>Finora</span>
+            </a>
+
+            <div class="sidebar-section-title">
+                WORKSPACE
+            </div>
+
+            <nav class="finora-nav">
+
+                <a href="dashboard.html" class="finora-nav-link">
+                    <span class="nav-icon">⌂</span>
+                    <span>Overview</span>
+                </a>
+
+                <a href="expenses.html" class="finora-nav-link">
+                    <span class="nav-icon">↗</span>
+                    <span>Expenses</span>
+                </a>
+
+                <a href="goals.html" class="finora-nav-link active">
+                    <span class="nav-icon">◎</span>
+                    <span>Goals</span>
+                </a>
+
+                <a href="#" class="finora-nav-link coming-link">
+                    <span class="nav-icon">▤</span>
+                    <span>Budget</span>
+                    <span class="nav-soon">Soon</span>
+                </a>
+
+                <a href="#" class="finora-nav-link coming-link">
+                    <span class="nav-icon">◌</span>
+                    <span>Insights</span>
+                    <span class="nav-soon">Soon</span>
+                </a>
+
+            </nav>
+
+        </div>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="sidebar-note">
+                <span class="sidebar-note-dot"></span>
+
+                <div>
+                    <strong>Financial awareness</strong>
+                    <p>Plan smarter. Spend clearer.</p>
+                </div>
+            </div>
+
+            <button id="logout-button" class="finora-logout">
+                <span>↪</span>
+                Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <main class="finora-main">
+
+        <header class="finora-header">
+
+            <div class="header-left">
+
+                <p class="header-eyebrow">
+                    SAVINGS GOAL
+                </p>
+
+                <h1>Plan your next financial goal</h1>
+
+                <p class="header-description">
+                    Set a target and let Finora calculate a practical monthly plan.
+                </p>
+
+            </div>
+
+
+            <div class="profile-chip">
+
+                <div class="profile-avatar" id="profile-avatar">
+                    U
+                </div>
+
+                <div>
+                    <strong id="profile-name">User</strong>
+                    <span>Personal account</span>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <section class="goal-layout">
+
+
+            <div class="dashboard-panel goal-form-panel">
+
+                <div class="panel-top">
+
+                    <div>
+                        <p class="panel-label">CREATE YOUR GOAL</p>
+                        <h2>What are you saving for?</h2>
+                    </div>
+
+                </div>
+
+
+                <form id="goal-form">
+
+                    <div class="goal-form-group">
+
+                        <label for="goal-name">
+                            Goal name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="goal-name"
+                            placeholder="Example: Emergency Fund"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="goal-form-group">
+
+                        <label for="target-amount">
+                            Target amount
+                        </label>
+
+                        <div class="goal-input-prefix">
+                            <span>₹</span>
+
+                            <input
+                                type="number"
+                                id="target-amount"
+                                min="1"
+                                placeholder="10000"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+
+                    <div class="goal-form-group">
+
+                        <label for="target-date">
+                            Target date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="target-date"
+                            required
+                        >
+
+                    </div>
+
+
+                    <button type="submit" class="goal-save-button">
+                        Save Savings Goal
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <div class="dashboard-panel goal-summary-panel">
+
+                <p class="panel-label">
+                    YOUR FINANCIAL PLAN
+                </p>
+
+                <h2 id="goal-summary-title">
+                    Set a goal to begin
+                </h2>
+
+                <p id="goal-summary-text">
+                    Your savings target and monthly budget will appear here.
+                </p>
+
+
+                <div class="goal-stat-list">
+
+                    <div class="goal-stat">
+                        <span>Monthly income</span>
+                        <strong id="goal-income">₹0</strong>
+                    </div>
+
+                    <div class="goal-stat">
+                        <span>Fixed expenses</span>
+                        <strong id="goal-fixed-expenses">₹0</strong>
+                    </div>
+
+                    <div class="goal-stat">
+                        <span>Available after fixed costs</span>
+                        <strong id="goal-available">₹0</strong>
+                    </div>
+
+                    <div class="goal-stat highlight-stat">
+                        <span>Required monthly saving</span>
+                        <strong id="required-saving">₹0</strong>
+                    </div>
+
+                    <div class="goal-stat">
+                        <span>Suggested spending budget</span>
+                        <strong id="spending-budget">₹0</strong>
+                    </div>
+
+                    <div class="goal-stat">
+                        <span>Spent this month</span>
+                        <strong id="monthly-spending">₹0</strong>
+                    </div>
+
+                    <div class="goal-stat highlight-stat">
+                        <span>Budget remaining</span>
+                        <strong id="remaining-budget">₹0</strong>
+                    </div>
+
+                    <div class="goal-budget-status" id="goal-budget-status">
+                        Budget status: Healthy
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="dashboard-panel goal-progress-panel">
+
+            <div class="panel-top">
+
+                <div>
+                    <p class="panel-label">GOAL PROGRESS</p>
+                    <h2 id="progress-goal-name">
+                        No goal created yet
+                    </h2>
+                </div>
+
+                <strong id="goal-progress-percent">
+                    0%
+                </strong>
+
+            </div>
+
+
+            <div class="goal-progress-track">
+
+                <div
+                    class="goal-progress-fill"
+                    id="goal-progress-fill">
+                </div>
+
+            </div>
+
+
+            <div class="goal-progress-footer">
+
+                <span>
+                    Current savings:
+                    <strong id="progress-current-savings">₹0</strong>
+                </span>
+
+                <span>
+                    Target:
+                    <strong id="progress-target">₹0</strong>
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <footer class="finora-footer">
+
+            <span>
+                © 2026 Finora
+            </span>
+
+            <span>
+                Financial awareness, not investment advice
+            </span>
+
+        </footer>
+
+    </main>
+
+
+    <script src="js/goals.js"></script>
+
+</body>
+</html>

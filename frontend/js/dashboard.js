@@ -444,3 +444,60 @@ async function loadSpendingTrend() {
 }
 
 loadSpendingTrend();
+
+async function loadDashboardGoal() {
+
+    if (!user) {
+        return;
+    }
+
+    try {
+
+        const response = await fetch(`/goals/plan/${user.id}`);
+
+        if (!response.ok) {
+            return;
+        }
+
+        const plan = await response.json();
+
+        document.querySelector("#dashboard-goal-name").textContent =
+            plan.goal_name;
+
+        document.querySelector("#dashboard-current-savings").textContent =
+            `₹${Number(plan.current_savings).toLocaleString("en-IN")}`;
+
+        document.querySelector("#dashboard-goal-target").textContent =
+            `₹${Number(plan.target_amount).toLocaleString("en-IN")}`;
+
+        document.querySelector("#dashboard-required-saving").textContent =
+            `₹${Number(plan.required_monthly_saving).toLocaleString("en-IN")}`;
+
+        document.querySelector("#dashboard-budget-left").textContent =
+            `₹${Number(plan.remaining_spending_budget).toLocaleString("en-IN")}`;
+
+        document.querySelector("#dashboard-goal-percent").textContent =
+            `${plan.progress}%`;
+
+        document.querySelector("#dashboard-goal-fill").style.width =
+            `${plan.progress}%`;
+
+        const dashboardBudgetStatus =
+            document.querySelector("#dashboard-budget-status");
+
+        dashboardBudgetStatus.textContent =
+            `Budget status: ${plan.budget_status}`;
+
+        dashboardBudgetStatus.className =
+            "dashboard-budget-status " +
+            plan.budget_status.toLowerCase().replace(" ", "-");
+
+    } catch (error) {
+
+        console.log("Unable to load dashboard goal.");
+
+    }
+}
+
+
+loadDashboardGoal();
