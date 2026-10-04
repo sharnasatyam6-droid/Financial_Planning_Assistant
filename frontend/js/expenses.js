@@ -315,3 +315,257 @@ importButton.addEventListener("click", function() {
 
     reader.readAsText(file);
 });
+
+
+const receiptFile = document.querySelector("#receipt-file");
+const scanReceiptButton = document.querySelector("#scan-receipt-button");
+const receiptFileName = document.querySelector("#receipt-file-name");
+const receiptPreviewWrap = document.querySelector("#receipt-preview-wrap");
+const receiptPreview = document.querySelector("#receipt-preview");
+const ocrStatus = document.querySelector("#ocr-status");
+const receiptResult = document.querySelector("#receipt-result");
+const receiptForm = document.querySelector("#receipt-form");
+
+receiptFile.addEventListener("change", function() {
+    if (!receiptFile.files.length) {
+        return;
+    }
+
+    const file = receiptFile.files[0];
+    receiptFileName.textContent = file.name;
+
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+        receiptPreview.src = event.target.result;
+        receiptPreviewWrap.classList.add("visible");
+    };
+
+    reader.readAsDataURL(file);
+});
+
+function findReceiptAmount(text) {
+    const matches = text.match(/(?:₹|rs\.?|inr)?\s*\d{1,3}(?:,\d{3})*(?:\.\d{1,2})?|(?:₹|rs\.?|inr)\s*\d+(?:\.\d{1,2})?/gi) || [];
+    const amounts = matches
+        .map(function(value) {
+            const number = Number(value.replace(/[^0-9.]/g, ""));
+            return number;
+        })
+        .filter(function(value) {
+            return value > 0 && value < 1000000;
+        });
+
+    if (!amounts.length) {
+        return "";
+    }
+
+    const totalWords = /(grand total|net total|total amount|amount payable|amount due|balance)/i;
+
+    const lines = text.split(/\r?\n/);
+
+    for (let i = 0; i < lines.length; i++) {
+        if (totalWords.test(lines[i])) {
+            const lineMatches = lines[i].match(/\d+(?:,\d{3})*(?:\.\d{1,2})?/g);
+
+            if (lineMatches && lineMatches.length) {
+                const value = Number(lineMatches[lineMatches.length - 1].replace(/,/g, ""));
+
+                if (value > 0) {
+                    return value;
+                }
+            }
+        }
+    }
+
+    return Math.max.apply(null, amounts);
+}
+
+function findReceiptDate(text) {
+    const match = text.match(/\b(\d{1,2})[\/-](\d{1,2})[\/-](\d{2,4})\b/);
+
+    if (!match) {
+        const iso = text.match(/\b(20\d{2})[\/-](\d{1,2})[\/-](\d{1,2})\b/);
+
+        if (iso) {
+            return iso[1] + "-" +
+                String(iso[2]).padStart(2, "0") + "-" +
+                String(iso[3]).padStart(2, "0");
+        }
+
+        return "";
+    }
+
+    let day = Number(match[1]);
+    let month = Number(match[2]);
+    let year = Number(match[3]);
+
+    if (year < 100) {
+        year += 2000;
+    }
+
+    if (month > 12 && day <= 12) {
+        const swap = day;
+        day = month;
+        month = swap;
+    }
+
+    if (year < 2000 || month < 1 || month > 12 || day < 1 || day > 31) {
+        return "";
+    }
+
+    return year + "-" +
+        String(month).padStart(2, "0") + "-" +
+        String(day).padStart(2, "0");
+}
+
+function findReceiptMerchant(text) {
+    const lines = text
+        .split(/\r?\n/)
+        .map(function(line) {
+            return line.trim();
+        })
+        .filter(function(line) {
+            return line.length >= 3;
+        });
+
+    const ignored = /^(invoice|receipt|tax invoice|bill|date|time|gst|gstin|phone|mobile|total|subtotal|amount|cash|change|thank)/i;
+
+    for (let i = 0; i < Math.min(lines.length, 8); i++) {
+        const line = lines[i];
+
+        if (!ignored.test(line) && !/^\d+$/.test(line) && line.length <= 60) {
+            return line;
+        }
+    }
+
+    return lines[0] || "Receipt expense";
+}
+
+function getReceiptCategory(text) {
+    return guessCategory(text);
+}
+
+function showReceiptReview(data) {
+    document.querySelector("#receipt-merchant").value = data.merchant;
+    document.querySelector("#receipt-amount").value = data.amount;
+    document.querySelector("#receipt-date").value = data.date || today;
+    document.querySelector("#receipt-category").value = data.category;
+
+    receiptResult.classList.add("ready");
+}
+
+scanReceiptButton.addEventListener("click", async function() {
+    if (!receiptFile.files.length) {
+        ocrStatus.textContent = "Choose a receipt image first.";
+        return;
+    }
+
+    if (typeof Tesseract === "undefined") {
+        ocrStatus.textContent = "OCR engine could not load. Check your internet connection and refresh.";
+        return;
+    }
+
+    scanReceiptButton.disabled = true;
+    scanReceiptButton.textContent = "Scanning...";
+    ocrStatus.textContent = "Reading the receipt...";
+
+    try {
+        const result = await Tesseract.recognize(
+            receiptFile.files[0],
+            "eng",
+            {
+                logger: function(message) {
+                    if (message.status === "recognizing text") {
+                        ocrStatus.textContent =
+                            "Reading receipt... " +
+                            Math.round(message.progress * 100) +
+                            "%";
+                    }
+                }
+            }
+        );
+
+        const text = result.data.text.trim();
+
+        if (!text) {
+            throw new Error("No readable text found");
+        }
+
+        const merchant = findReceiptMerchant(text);
+        const amount = findReceiptAmount(text);
+        const date = findReceiptDate(text);
+
+        showReceiptReview({
+            merchant: merchant,
+            amount: amount,
+            date: date,
+            category: getReceiptCategory(merchant + " " + text)
+        });
+
+        ocrStatus.textContent =
+            "Receipt scanned. Review the extracted details before saving.";
+
+    } catch (error) {
+        ocrStatus.textContent =
+            "We could not read this receipt clearly. Try a sharper, well-lit image.";
+        console.log("Receipt OCR failed.", error);
+    } finally {
+        scanReceiptButton.disabled = false;
+        scanReceiptButton.textContent = "Scan receipt";
+    }
+});
+
+receiptForm.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const payment = document.querySelector("#receipt-payment").value;
+    const transaction = document.querySelector("#receipt-transaction").value.trim();
+
+    if (payment === "online" && !transaction) {
+        alert("Enter a transaction/reference ID for an online payment.");
+        return;
+    }
+
+    const expense = {
+        user_id: user.id,
+        amount: Number(document.querySelector("#receipt-amount").value),
+        category: document.querySelector("#receipt-category").value,
+        description: document.querySelector("#receipt-merchant").value.trim(),
+        payment_mode: payment,
+        transaction_id: transaction,
+        expense_date: document.querySelector("#receipt-date").value
+    };
+
+    if (!expense.amount || !expense.description || !expense.expense_date) {
+        alert("Please review the amount, description and date.");
+        return;
+    }
+
+    try {
+        const response = await fetch("/expenses/add", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(expense)
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            alert(data.detail || "Unable to save scanned expense.");
+            return;
+        }
+
+        ocrStatus.textContent = "Scanned expense added successfully.";
+        receiptForm.reset();
+        receiptResult.classList.remove("ready");
+        receiptPreviewWrap.classList.remove("visible");
+        receiptFile.value = "";
+        receiptFileName.textContent = "JPG, PNG or WEBP";
+        loadExpenses();
+
+    } catch (error) {
+        alert("Unable to connect to the server.");
+    }
+});
