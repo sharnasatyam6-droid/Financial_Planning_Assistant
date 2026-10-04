@@ -1,10 +1,12 @@
 [project]
 name = "my-fastapi-app"
 version = "0.1.0"
+requires-python = ">=3.11"
 dependencies = [
     "fastapi",
     "uvicorn",
-    "pwdlib[argon2]"
+    "pwdlib[argon2]",
+    "psycopg[binary]"
 ]
 
 [tool.vercel]
