@@ -118,6 +118,34 @@
                 </form>
             </div>
 
+            <div class="expense-import-card">
+                <div class="section-heading">
+                    <div>
+                        <h2>Import Statement</h2>
+                        <p>Upload a CSV bank or passbook export and Finora will prepare the transactions for tracking.</p>
+                    </div>
+                </div>
+
+                <label class="import-dropzone" for="statement-file">
+                    <span class="import-drop-icon">↑</span>
+                    <strong>Choose CSV file</strong>
+                    <span id="import-file-name">CSV files only</span>
+                </label>
+
+                <input type="file" id="statement-file" accept=".csv,text/csv" hidden>
+
+                <div class="import-format-note">
+                    Expected columns: <strong>date, amount, description</strong>.
+                    Optional: category, payment_mode, transaction_id.
+                </div>
+
+                <button type="button" id="import-button" class="secondary-action-button">
+                    Import transactions
+                </button>
+
+                <p id="import-status" class="import-status"></p>
+            </div>
+
             <div class="expense-list-card">
 
                 <div class="section-heading">
