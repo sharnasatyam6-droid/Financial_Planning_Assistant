@@ -4320,3 +4320,230 @@ input {
         padding: 18px;
     }
 }
+
+
+/* FINORA V0.9 EXPENSE WORKSPACE */
+.expense-command-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+.expense-entry-panel,
+.expense-import-panel,
+.recent-expenses-panel {
+    min-width: 0;
+}
+
+.expense-panel-icon {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: var(--soft-green);
+    color: var(--primary);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.finora-expense-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 22px;
+}
+
+.expense-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.finora-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.finora-input-group label {
+    color: #344054;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.finora-input-group input,
+.finora-input-group select {
+    width: 100%;
+    min-height: 46px;
+    padding: 0 13px;
+    border: 1px solid #dfe3e9;
+    border-radius: 9px;
+    outline: none;
+    background: #ffffff;
+    color: #101828;
+    font-size: 13px;
+    transition: 0.2s ease;
+}
+
+.finora-input-group input:focus,
+.finora-input-group select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(23, 107, 91, 0.08);
+}
+
+.money-input {
+    position: relative;
+}
+
+.money-input span {
+    position: absolute;
+    left: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary);
+    font-weight: 700;
+    z-index: 1;
+}
+
+.money-input input {
+    padding-left: 31px;
+}
+
+.expense-primary-button {
+    min-height: 46px;
+    margin-top: 2px;
+    border: 0;
+    border-radius: 9px;
+    background: var(--primary);
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.expense-primary-button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+.expense-primary-button span {
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+.expense-import-copy {
+    margin-top: 20px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+.expense-import-panel .import-dropzone {
+    margin-top: 18px;
+    min-height: 112px;
+    background: #fafbfc;
+}
+
+.expense-import-panel .import-format-note {
+    margin-top: 12px;
+}
+
+.expense-import-panel .secondary-action-button {
+    margin-top: 4px;
+    background: #17201d;
+}
+
+.recent-expenses-panel {
+    padding-bottom: 10px;
+}
+
+.expense-history-label {
+    color: #98a2b3;
+    font-size: 12px;
+}
+
+.finora-expense-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.finora-expense-list .expense-item {
+    min-width: 0;
+    padding: 16px 17px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #fafbfc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    transition: 0.2s ease;
+}
+
+.finora-expense-list .expense-item:hover {
+    border-color: #d4d9e2;
+    transform: translateY(-1px);
+}
+
+.finora-expense-list .expense-item h3 {
+    color: var(--text);
+    font-family: "Manrope", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.finora-expense-list .expense-item p {
+    margin-top: 5px;
+    color: var(--muted);
+    font-size: 11px;
+    text-transform: capitalize;
+}
+
+.finora-expense-list .expense-item span {
+    display: block;
+    margin-top: 5px;
+    color: #98a2b3;
+    font-size: 10px;
+}
+
+.finora-expense-list .expense-item > strong {
+    flex-shrink: 0;
+    color: var(--text);
+    font-family: "Manrope", sans-serif;
+    font-size: 15px;
+}
+
+.finora-page-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 24px 2px 8px;
+    color: #98a2b3;
+    font-size: 11px;
+}
+
+@media (max-width: 1050px) {
+    .expense-command-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .expense-form-row,
+    .finora-expense-list {
+        grid-template-columns: 1fr;
+    }
+
+    .finora-page-footer {
+        flex-direction: column;
+    }
+}
