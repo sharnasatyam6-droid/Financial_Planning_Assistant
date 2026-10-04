@@ -3856,3 +3856,183 @@ input {
         width: 100%;
     }
 }
+
+
+/* FINORA V0.8 FINANCIAL SIGNALS */
+
+.signal-panel {
+    margin-top: 18px;
+    overflow: hidden;
+}
+
+.signal-panel-top {
+    margin-bottom: 20px;
+}
+
+.dashboard-signal-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 240px;
+    gap: 14px;
+}
+
+.signal-highlight {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    min-height: 116px;
+    padding: 20px;
+    border: 1px solid #e7e8eb;
+    border-radius: 14px;
+    background: #fafafa;
+    transition: 0.2s ease;
+}
+
+.signal-highlight:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 25px rgba(25, 27, 30, 0.05);
+}
+
+.signal-highlight-icon {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 11px;
+    background: #e9f4ee;
+    color: #16845c;
+    font-weight: 800;
+}
+
+.signal-highlight-label {
+    display: block;
+    margin-bottom: 6px;
+    color: #16845c;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.signal-highlight h3 {
+    margin: 0;
+    font-family: "Manrope", sans-serif;
+    font-size: 17px;
+}
+
+.signal-highlight p {
+    max-width: 650px;
+    margin: 7px 0 0;
+    color: #777b82;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.signal-highlight.warning {
+    border-color: #ead9ad;
+    background: #fffbf1;
+}
+
+.signal-highlight.warning .signal-highlight-icon {
+    background: #fff0d2;
+    color: #b87900;
+}
+
+.signal-highlight.warning .signal-highlight-label {
+    color: #b87900;
+}
+
+.signal-highlight.critical {
+    border-color: #e9c8c8;
+    background: #fff7f7;
+}
+
+.signal-highlight.critical .signal-highlight-icon {
+    background: #f9dddd;
+    color: #b42318;
+}
+
+.signal-highlight.critical .signal-highlight-label {
+    color: #b42318;
+}
+
+.signal-highlight.info {
+    border-color: #d7e1ee;
+    background: #f7faff;
+}
+
+.signal-highlight.info .signal-highlight-icon {
+    background: #e4edf8;
+    color: #35618d;
+}
+
+.signal-highlight.info .signal-highlight-label {
+    color: #35618d;
+}
+
+.signal-side-stats {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 14px;
+}
+
+.signal-side-stats > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 17px 18px;
+    border: 1px solid #e7e8eb;
+    border-radius: 14px;
+    background: #ffffff;
+}
+
+.signal-side-stats span {
+    color: #8a8e95;
+    font-size: 10px;
+}
+
+.signal-side-stats strong {
+    margin-top: 6px;
+    font-family: "Manrope", sans-serif;
+    font-size: 18px;
+}
+
+.nav-alert-count {
+    min-width: 19px;
+    height: 19px;
+    margin-left: auto;
+    padding: 0 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background: #eeac31;
+    color: #17191c;
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.finora-nav-link.active .nav-alert-count {
+    background: rgba(23, 25, 28, 0.15);
+}
+
+@media (max-width: 900px) {
+    .dashboard-signal-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .signal-side-stats {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .signal-side-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .signal-highlight {
+        padding: 16px;
+    }
+}
