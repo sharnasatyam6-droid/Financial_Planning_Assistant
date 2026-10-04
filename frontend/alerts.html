@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Alerts | Finora</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+            <div class="brand-icon">F</div>
+
+            <div>
+                <h2>Finora</h2>
+                <span>Financial Planning</span>
+            </div>
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html">
+                Overview
+            </a>
+
+            <a href="expenses.html">
+                Expenses
+            </a>
+
+            <a href="goals.html">
+                Goals
+            </a>
+
+            <a href="alerts.html" class="active">
+                <span>Alerts</span>
+                <span class="nav-alert-count" id="nav-alert-count"></span>
+            </a>
+
+
+            <div class="nav-section-title">
+                COMING SOON
+            </div>
+
+            <a href="#" class="disabled-nav">
+                Budget
+            </a>
+
+            <a href="#" class="disabled-nav">
+                Insights
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-profile">
+
+            <div class="profile-avatar" id="profile-avatar">
+                S
+            </div>
+
+            <div class="profile-info">
+                <strong id="profile-name"></strong>
+                <span>Personal Account</span>
+            </div>
+
+            <button id="logout-button">
+                Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <main class="main-content">
+
+        <header class="dashboard-header">
+
+            <div>
+
+                <span class="dashboard-eyebrow">
+                    FINORA MONITORING
+                </span>
+
+                <h1>Your financial alerts</h1>
+
+                <p>
+                    Stay informed about your spending, savings goals
+                    and financial progress.
+                </p>
+
+            </div>
+
+
+            <div class="dashboard-header-right">
+
+                <div class="dashboard-date">
+                    <span>Today</span>
+                    <strong id="today-date"></strong>
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <section class="alerts-overview">
+
+            <div class="alert-count-card">
+
+                <div class="alert-count-icon">
+                    !
+                </div>
+
+                <div>
+
+                    <span>Active alerts</span>
+
+                    <strong id="alert-count">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="alerts-intro-card">
+
+                <div class="alerts-intro-icon">
+                    i
+                </div>
+
+                <div>
+
+                    <h3>
+                        Stay ahead of your finances
+                    </h3>
+
+                    <p>
+                        Finora continuously monitors your recorded
+                        spending and savings progress to highlight
+                        areas that may need attention.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="alerts-main-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-eyebrow">
+                        MONITORING
+                    </span>
+
+                    <h2>
+                        Recent alerts
+                    </h2>
+
+                </div>
+
+
+                <button
+                    id="refresh-alerts"
+                    class="secondary-button"
+                >
+                    Refresh
+                </button>
+
+            </div>
+
+
+
+            <div
+                id="alerts-container"
+                class="alerts-list"
+            >
+
+                <div class="alerts-loading">
+                    Checking your financial activity...
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="financial-awareness-card">
+
+            <div class="awareness-icon">
+                i
+            </div>
+
+            <div>
+
+                <h3>
+                    Financial awareness, not financial advice
+                </h3>
+
+                <p>
+                    These alerts are based on the financial information
+                    you provide to Finora. They are designed to improve
+                    financial awareness and planning, not replace
+                    professional financial advice.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <footer class="dashboard-footer">
+
+            <span>
+                Finora Personal Financial Planning Assistant
+            </span>
+
+            <span>
+                v0.8
+            </span>
+
+        </footer>
+
+    </main>
+
+
+    <script src="js/alerts.js"></script>
+
+</body>
+</html>
