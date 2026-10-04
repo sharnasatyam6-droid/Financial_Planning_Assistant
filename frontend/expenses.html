@@ -8,135 +8,185 @@
 </head>
 <body class="dashboard-page">
 
-    <aside class="sidebar">
-        <div class="sidebar-brand">Finora</div>
+    <aside class="finora-sidebar">
+        <div class="sidebar-top">
+            <a href="dashboard.html" class="finora-brand">
+                <span class="brand-mark">F</span>
+                <span>Finora</span>
+            </a>
 
-        <nav class="sidebar-nav">
-            <a href="dashboard.html">Overview</a>
-            <a href="expenses.html" class="active">Expenses</a>
-            <a href="#" class="coming-link">Goals</a>
-            <a href="#" class="coming-link">Budget</a>
-            <a href="#" class="coming-link">Insights</a>
-        </nav>
+            <div class="sidebar-section-title">WORKSPACE</div>
 
-        <button id="logout-button" class="logout-button">Logout</button>
+            <nav class="finora-nav">
+                <a href="dashboard.html" class="finora-nav-link">
+                    <span class="nav-icon">⌂</span>
+                    <span>Overview</span>
+                </a>
+
+                <a href="expenses.html" class="finora-nav-link active">
+                    <span class="nav-icon">↗</span>
+                    <span>Expenses</span>
+                </a>
+
+                <a href="goals.html" class="finora-nav-link">
+                    <span class="nav-icon">◎</span>
+                    <span>Goals</span>
+                </a>
+
+                <a href="alerts.html" class="finora-nav-link">
+                    <span class="nav-icon">!</span>
+                    <span>Alerts</span>
+                    <span class="nav-alert-count" id="expense-alert-count"></span>
+                </a>
+
+                <a href="#" class="finora-nav-link coming-link">
+                    <span class="nav-icon">▤</span>
+                    <span>Budget</span>
+                    <span class="nav-soon">Soon</span>
+                </a>
+
+                <a href="insights.html" class="finora-nav-link">
+                    <span class="nav-icon">◌</span>
+                    <span>Insights</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-note">
+                <span class="sidebar-note-dot"></span>
+                <div>
+                    <strong>Financial awareness</strong>
+                    <p>Plan smarter. Spend clearer.</p>
+                </div>
+            </div>
+
+            <button id="logout-button" class="finora-logout">
+                <span>↪</span>
+                Logout
+            </button>
+        </div>
     </aside>
 
-    <main class="dashboard-main">
-
-        <header class="dashboard-header">
-            <div>
-                <p class="dashboard-label">EXPENSE TRACKING</p>
-                <h1>Manage your expenses</h1>
-                <p class="dashboard-subtitle">
-                    Track where your money goes and keep your spending organized.
+    <main class="finora-main">
+        <header class="finora-header">
+            <div class="header-left">
+                <p class="header-eyebrow">EXPENSE TRACKING</p>
+                <h1>Know where your money goes.</h1>
+                <p class="header-description">
+                    Record daily spending or import a statement and let Finora organize the picture.
                 </p>
             </div>
 
-            <div class="profile-chip">
-                <div class="profile-avatar" id="profile-avatar">U</div>
-                <span id="profile-name">User</span>
+            <div class="header-right">
+                <div class="today-badge">
+                    <span class="today-dot"></span>
+                    <span id="today-date">Today</span>
+                </div>
+
+                <div class="profile-chip">
+                    <div class="profile-avatar" id="profile-avatar">U</div>
+                    <div>
+                        <strong id="profile-name">User</strong>
+                        <span>Personal account</span>
+                    </div>
+                </div>
             </div>
         </header>
 
-        <section class="expense-layout">
-
-            <div class="expense-form-card">
-
-                <div class="section-heading">
+        <section class="expense-command-grid">
+            <div class="dashboard-panel expense-entry-panel">
+                <div class="panel-top">
                     <div>
-                        <h2>Add Expense</h2>
-                        <p>Record a new expense.</p>
+                        <p class="panel-label">QUICK ENTRY</p>
+                        <h2>Add an expense</h2>
                     </div>
+                    <span class="expense-panel-icon">+</span>
                 </div>
 
-                <form id="expense-form">
+                <form id="expense-form" class="finora-expense-form">
+                    <div class="expense-form-row">
+                        <div class="finora-input-group">
+                            <label for="amount">Amount</label>
+                            <div class="money-input">
+                                <span>₹</span>
+                                <input type="number" id="amount" placeholder="0" min="1" step="0.01" required>
+                            </div>
+                        </div>
 
-                    <div class="input-group">
-                        <label for="amount">Amount</label>
-                        <input
-                            type="number"
-                            id="amount"
-                            placeholder="Enter amount"
-                            min="1"
-                            required
-                        >
+                        <div class="finora-input-group">
+                            <label for="expense-date">Date</label>
+                            <input type="date" id="expense-date" required>
+                        </div>
                     </div>
 
-                    <div class="input-group">
-                        <label for="category">Category</label>
-                        <select id="category" required>
-                            <option value="">Select category</option>
-                            <option value="Food">Food</option>
-                            <option value="Transport">Transport</option>
-                            <option value="Education">Education</option>
-                            <option value="Shopping">Shopping</option>
-                            <option value="Bills">Bills</option>
-                            <option value="Entertainment">Entertainment</option>
-                            <option value="Health">Health</option>
-                            <option value="Other">Other</option>
-                        </select>
+                    <div class="finora-input-group">
+                        <label for="description">What was it for?</label>
+                        <input type="text" id="description" placeholder="e.g. Groceries, cab, course fee" required>
                     </div>
 
-                    <div class="input-group">
-                        <label for="description">Description</label>
-                        <input
-                            type="text"
-                            id="description"
-                            placeholder="What did you spend on?"
-                            required
-                        >
+                    <div class="expense-form-row">
+                        <div class="finora-input-group">
+                            <label for="category">Category</label>
+                            <select id="category" required>
+                                <option value="">Select category</option>
+                                <option value="Food">Food</option>
+                                <option value="Transport">Transport</option>
+                                <option value="Education">Education</option>
+                                <option value="Shopping">Shopping</option>
+                                <option value="Bills">Bills</option>
+                                <option value="Entertainment">Entertainment</option>
+                                <option value="Health">Health</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="finora-input-group">
+                            <label for="payment-mode">Payment</label>
+                            <select id="payment-mode" required>
+                                <option value="">Select payment</option>
+                                <option value="cash">Cash</option>
+                                <option value="online">Online</option>
+                            </select>
+                        </div>
                     </div>
 
-                    <div class="input-group">
-                        <label for="payment-mode">Payment Mode</label>
-                        <select id="payment-mode" required>
-                            <option value="">Select payment mode</option>
-                            <option value="cash">Cash</option>
-                            <option value="online">Online</option>
-                        </select>
+                    <div class="finora-input-group" id="transaction-group">
+                        <label for="transaction-id">Transaction / reference ID</label>
+                        <input type="text" id="transaction-id" placeholder="Required for online payments">
                     </div>
 
-                    <div class="input-group" id="transaction-group">
-                        <label for="transaction-id">Transaction ID</label>
-                        <input
-                            type="text"
-                            id="transaction-id"
-                            placeholder="Enter transaction/reference ID"
-                        >
-                    </div>
-
-                    <div class="input-group">
-                        <label for="expense-date">Date</label>
-                        <input type="date" id="expense-date" required>
-                    </div>
-
-                    <button type="submit" class="auth-button">
-                        Add Expense
+                    <button type="submit" class="expense-primary-button">
+                        <span>+</span>
+                        Add expense
                     </button>
-
                 </form>
             </div>
 
-            <div class="expense-import-card">
-                <div class="section-heading">
+            <div class="dashboard-panel expense-import-panel">
+                <div class="panel-top">
                     <div>
-                        <h2>Import Statement</h2>
-                        <p>Upload a CSV bank or passbook export and Finora will prepare the transactions for tracking.</p>
+                        <p class="panel-label">DATA IMPORT</p>
+                        <h2>Bring in your statement</h2>
                     </div>
+                    <span class="expense-panel-icon">↑</span>
                 </div>
+
+                <p class="expense-import-copy">
+                    Upload a CSV export from your bank or passbook. Finora will read the transactions and add them to your expense history.
+                </p>
 
                 <label class="import-dropzone" for="statement-file">
                     <span class="import-drop-icon">↑</span>
-                    <strong>Choose CSV file</strong>
-                    <span id="import-file-name">CSV files only</span>
+                    <strong>Choose CSV statement</strong>
+                    <span id="import-file-name">Date, amount and description required</span>
                 </label>
 
                 <input type="file" id="statement-file" accept=".csv,text/csv" hidden>
 
                 <div class="import-format-note">
-                    Expected columns: <strong>date, amount, description</strong>.
-                    Optional: category, payment_mode, transaction_id.
+                    Optional columns: <strong>category</strong>, <strong>payment_mode</strong>, <strong>transaction_id</strong>.
+                    Missing categories are estimated from the description.
                 </div>
 
                 <button type="button" id="import-button" class="secondary-action-button">
@@ -145,24 +195,26 @@
 
                 <p id="import-status" class="import-status"></p>
             </div>
-
-            <div class="expense-list-card">
-
-                <div class="section-heading">
-                    <div>
-                        <h2>Recent Expenses</h2>
-                        <p>Your recorded transactions.</p>
-                    </div>
-                </div>
-
-                <div id="expense-list" class="expense-list">
-                    <p class="empty-expenses">Loading expenses...</p>
-                </div>
-
-            </div>
-
         </section>
 
+        <section class="dashboard-panel recent-expenses-panel">
+            <div class="panel-top">
+                <div>
+                    <p class="panel-label">TRANSACTION HISTORY</p>
+                    <h2>Recent expenses</h2>
+                </div>
+                <span class="expense-history-label">Latest first</span>
+            </div>
+
+            <div id="expense-list" class="expense-list finora-expense-list">
+                <p class="empty-expenses">Loading expenses...</p>
+            </div>
+        </section>
+
+        <footer class="finora-page-footer">
+            <span>Finora · Personal financial awareness</span>
+            <span>Tracking your money with clarity.</span>
+        </footer>
     </main>
 
     <script src="js/expenses.js"></script>
