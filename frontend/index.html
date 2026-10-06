@@ -37,6 +37,16 @@
     <main>
 
         <section class="hero">
+            <div class="hero-media">
+                <video class="hero-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1800&q=85">
+                    <source src="https://cdn.coverr.co/videos/coverr-aerial-view-of-a-city-at-night-1572/1080p.mp4" type="video/mp4">
+                </video>
+                <div class="hero-video-shade"></div>
+                <div class="hero-scanline"></div>
+                <div class="hero-orbit orbit-one"></div>
+                <div class="hero-orbit orbit-two"></div>
+            </div>
+
             <div class="container hero-grid">
 
                 <div class="hero-content">
@@ -74,6 +84,9 @@
 
                 </div>
 
+
+                <div class="hero-floating-tag tag-income"><span>↗</span> CASHFLOW +18.4%</div>
+                <div class="hero-floating-tag tag-ai"><span>✦</span> FINORA INTELLIGENCE</div>
 
                 <div class="dashboard-preview">
 
@@ -143,6 +156,21 @@
 
                 </div>
 
+            </div>
+        </section>
+
+        <section class="visual-break">
+            <div class="visual-break-image">
+                <img src="https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=1800&q=85" alt="Modern financial planning workspace" loading="lazy">
+                <div class="visual-break-overlay"></div>
+                <div class="visual-break-copy">
+                    <span class="section-tag">SEE THE WHOLE PICTURE</span>
+                    <h2>Numbers are data.<br><em>Direction is intelligence.</em></h2>
+                    <p>Finora turns everyday transactions into a visual map of where your money is going—and where you want it to go next.</p>
+                </div>
+                <div class="visual-data data-one"><strong>₹42.5K</strong><span>MONTHLY INFLOW</span></div>
+                <div class="visual-data data-two"><strong>72%</strong><span>GOAL PROGRESS</span></div>
+                <div class="visual-data data-three"><strong>−8.6%</strong><span>UNNECESSARY SPEND</span></div>
             </div>
         </section>
 
@@ -346,6 +374,10 @@
 
 
     <script src="js/main.js"></script>
+    <script>
+        const heroVideo = document.querySelector(".hero-video");
+        if (heroVideo) heroVideo.play().catch(function () {});
+    </script>
 
 </body>
 </html>
