@@ -8875,3 +8875,198 @@ html,body{color:#f4f7f2}
     .dashboard-page .finora-main h1{font-size:clamp(1.7rem,7vw,2.4rem)}
     .dashboard-page .finora-main h2{font-size:clamp(1.35rem,6vw,1.9rem)}
 }
+
+
+/* =========================================================
+   FINORA // INNER CARD VISIBILITY FIX
+   Fixes legacy white inner tiles whose text was disappearing.
+========================================================= */
+
+/* Dashboard savings goal stat tiles */
+.dashboard-page .dashboard-goal-stats > div{
+    background:linear-gradient(145deg,#111f18,#0b1510) !important;
+    background-color:#0b1510 !important;
+    border:1px solid rgba(255,255,255,.09) !important;
+    color:#f4f7f2 !important;
+    box-shadow:none !important;
+}
+.dashboard-page .dashboard-goal-stats > div > span{
+    color:#89978f !important;
+    opacity:1 !important;
+}
+.dashboard-page .dashboard-goal-stats > div > strong{
+    color:#ffffff !important;
+    opacity:1 !important;
+    -webkit-text-fill-color:#ffffff !important;
+}
+
+/* Budget goal tiles */
+.dashboard-page .budget-goal-grid > div{
+    background:linear-gradient(145deg,#111f18,#0b1510) !important;
+    background-color:#0b1510 !important;
+    border:1px solid rgba(255,255,255,.09) !important;
+    color:#f4f7f2 !important;
+    box-shadow:none !important;
+}
+.dashboard-page .budget-goal-grid > div > span{
+    color:#89978f !important;
+    opacity:1 !important;
+}
+.dashboard-page .budget-goal-grid > div > strong{
+    color:#ffffff !important;
+    opacity:1 !important;
+    -webkit-text-fill-color:#ffffff !important;
+}
+
+/* Expense history cards */
+.dashboard-page .expense-list .expense-item,
+.dashboard-page .finora-expense-list .expense-item{
+    background:linear-gradient(145deg,#111f18,#0b1510) !important;
+    background-color:#0b1510 !important;
+    border:1px solid rgba(255,255,255,.09) !important;
+    color:#f4f7f2 !important;
+    box-shadow:none !important;
+}
+.dashboard-page .expense-list .expense-item h3,
+.dashboard-page .finora-expense-list .expense-item h3{
+    color:#ffffff !important;
+    opacity:1 !important;
+}
+.dashboard-page .expense-list .expense-item p,
+.dashboard-page .finora-expense-list .expense-item p{
+    color:#9aa79f !important;
+    opacity:1 !important;
+}
+.dashboard-page .expense-list .expense-item span,
+.dashboard-page .finora-expense-list .expense-item span{
+    color:#68766e !important;
+    opacity:1 !important;
+}
+.dashboard-page .expense-list .expense-item > strong,
+.dashboard-page .finora-expense-list .expense-item > strong{
+    color:#ffffff !important;
+    opacity:1 !important;
+    -webkit-text-fill-color:#ffffff !important;
+}
+
+/* Dashboard category rows */
+.dashboard-page .category-summary .category-row{
+    background:#0d1812 !important;
+    background-color:#0d1812 !important;
+    border:1px solid rgba(255,255,255,.07) !important;
+    color:#f4f7f2 !important;
+}
+.dashboard-page .category-summary .category-row span{
+    color:#d1dad4 !important;
+}
+.dashboard-page .category-summary .category-row strong{
+    color:#ffffff !important;
+    -webkit-text-fill-color:#ffffff !important;
+}
+
+/* Dashboard recent expense rows */
+.dashboard-page .recent-expense-item{
+    background:#0d1812 !important;
+    background-color:#0d1812 !important;
+    border:1px solid rgba(255,255,255,.07) !important;
+    color:#f4f7f2 !important;
+}
+.dashboard-page .recent-expense-item h3{
+    color:#ffffff !important;
+}
+.dashboard-page .recent-expense-item p{
+    color:#96a39b !important;
+}
+.dashboard-page .recent-expense-right strong{
+    color:#ffffff !important;
+    -webkit-text-fill-color:#ffffff !important;
+}
+.dashboard-page .recent-expense-right span{
+    color:#68766e !important;
+}
+
+/* Signal mini-stat cards */
+.dashboard-page .signal-side-stats > div{
+    background:linear-gradient(145deg,#111f18,#0b1510) !important;
+    background-color:#0b1510 !important;
+    border:1px solid rgba(255,255,255,.09) !important;
+    color:#f4f7f2 !important;
+}
+.dashboard-page .signal-side-stats > div > span{
+    color:#89978f !important;
+}
+.dashboard-page .signal-side-stats > div > strong{
+    color:#ffffff !important;
+    -webkit-text-fill-color:#ffffff !important;
+}
+
+/* Alerts summary tiles */
+.dashboard-page .alerts-summary-grid > *,
+.dashboard-page .alert-total-card,
+.dashboard-page .alert-monitor-card{
+    background:linear-gradient(145deg,#111f18,#0b1510) !important;
+    background-color:#0b1510 !important;
+    color:#f4f7f2 !important;
+    border-color:rgba(255,255,255,.09) !important;
+}
+.dashboard-page .alerts-summary-grid > * span,
+.dashboard-page .alerts-summary-grid > * p{
+    color:#96a39b !important;
+}
+.dashboard-page .alerts-summary-grid > * strong{
+    color:#ffffff !important;
+    -webkit-text-fill-color:#ffffff !important;
+}
+
+/* Generic inner stat tiles on all Finora app pages.
+   This catches old white tiles without touching inputs. */
+.dashboard-page .dashboard-panel .stat,
+.dashboard-page .dashboard-panel .stat-card,
+.dashboard-page .dashboard-panel .summary-item,
+.dashboard-page .dashboard-panel .metric-card{
+    background:#0d1812 !important;
+    background-color:#0d1812 !important;
+    color:#f4f7f2 !important;
+    border-color:rgba(255,255,255,.08) !important;
+}
+.dashboard-page .dashboard-panel .stat strong,
+.dashboard-page .dashboard-panel .stat-card strong,
+.dashboard-page .dashboard-panel .summary-item strong,
+.dashboard-page .dashboard-panel .metric-card strong{
+    color:#ffffff !important;
+    -webkit-text-fill-color:#ffffff !important;
+}
+
+/* Make every amount/value inside known Finora financial tiles
+   impossible to render as near-white on a white background. */
+.dashboard-page [id*="amount"],
+.dashboard-page [id*="target"],
+.dashboard-page [id*="saving"],
+.dashboard-page [id*="savings"],
+.dashboard-page [id*="budget"],
+.dashboard-page [id*="progress"],
+.dashboard-page [id*="income"],
+.dashboard-page [id*="spent"],
+.dashboard-page [id*="remaining"]{
+    opacity:1 !important;
+}
+
+/* Hover stays dark */
+.dashboard-page .dashboard-goal-stats > div:hover,
+.dashboard-page .budget-goal-grid > div:hover,
+.dashboard-page .expense-item:hover,
+.dashboard-page .category-row:hover,
+.dashboard-page .recent-expense-item:hover,
+.dashboard-page .signal-side-stats > div:hover{
+    background:#14241b !important;
+    border-color:rgba(201,255,77,.18) !important;
+}
+
+/* Mobile inner tiles */
+@media(max-width:700px){
+    .dashboard-page .dashboard-goal-stats > div,
+    .dashboard-page .budget-goal-grid > div,
+    .dashboard-page .expense-list .expense-item{
+        background:#0d1812 !important;
+    }
+}
