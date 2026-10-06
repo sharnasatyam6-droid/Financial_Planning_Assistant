@@ -3,381 +3,302 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finora | Personal Financial Planning</title>
+    <meta name="theme-color" content="#07100d">
+    <meta name="description" content="Finora — see your money clearly, plan with confidence, and stay on track.">
+    <title>Finora — See Your Money Clearly</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body class="finora-landing">
 
-    <header class="navbar">
-        <div class="container nav-content">
+<header class="landing-nav">
+    <div class="landing-nav-inner">
+        <a href="index.html" class="landing-logo">
+            <span class="landing-logo-mark">F</span>
+            <span>FINORA</span>
+        </a>
 
-            <a href="index.html" class="logo">Finora</a>
+        <nav class="landing-nav-links">
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How it works</a>
+            <a href="#story">Why Finora</a>
+        </nav>
 
-            <nav class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#how-it-works">How it works</a>
-                <a href="#about">About</a>
-            </nav>
-
-            <div class="nav-actions">
-                <a href="login.html" class="login-link">Log in</a>
-                <a href="signup.html" class="primary-btn">Get Started</a>
-            </div>
-
+        <div class="landing-nav-actions">
+            <a href="login.html" class="landing-login">Log in</a>
+            <a href="signup.html" class="landing-nav-cta">Get started <span>↗</span></a>
         </div>
-    </header>
+    </div>
+</header>
 
+<main>
 
-    <main>
+<section class="finora-cinema">
+    <div class="cinema-media">
+        <video class="cinema-video" autoplay muted loop playsinline preload="metadata"
+               poster="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2200&q=90">
+            <source src="https://cdn.coverr.co/videos/coverr-aerial-view-of-a-city-at-night-1572/1080p.mp4" type="video/mp4">
+        </video>
+        <div class="cinema-poster"></div>
+        <div class="cinema-gradient"></div>
+        <div class="cinema-noise"></div>
+    </div>
 
-        <section class="hero">
-            <div class="hero-media">
-                <video class="hero-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1800&q=85">
-                    <source src="https://cdn.coverr.co/videos/coverr-aerial-view-of-a-city-at-night-1572/1080p.mp4" type="video/mp4">
-                </video>
-                <div class="hero-video-shade"></div>
-                <div class="hero-scanline"></div>
-                <div class="hero-orbit orbit-one"></div>
-                <div class="hero-orbit orbit-two"></div>
+    <div class="cinema-grid"></div>
+    <div class="cinema-glow cinema-glow-one"></div>
+    <div class="cinema-glow cinema-glow-two"></div>
+
+    <div class="cinema-content">
+        <div class="cinema-kicker">
+            <span class="live-dot"></span>
+            PERSONAL FINANCE, REIMAGINED
+        </div>
+
+        <h1>
+            Your money<br>
+            deserves a <span>better view.</span>
+        </h1>
+
+        <p class="cinema-lead">
+            Finora turns income, expenses, goals and everyday decisions
+            into one intelligent financial picture.
+        </p>
+
+        <div class="cinema-actions">
+            <a href="signup.html" class="cinema-primary">Build my financial picture <span>↗</span></a>
+            <a href="#story" class="cinema-secondary"><span class="play-ring">▶</span> Explore Finora</a>
+        </div>
+
+        <div class="cinema-trust">
+            <span>✓ Financial awareness</span>
+            <span>✓ Goal-based planning</span>
+            <span>✓ Clear spending signals</span>
+        </div>
+    </div>
+
+    <div class="cinema-side-note">
+        <span>FINORA / 01</span>
+        <i></i>
+        <span>SEE THE WHOLE PICTURE</span>
+    </div>
+
+    <div class="cinema-bottom">
+        <span>SCROLL TO EXPLORE</span>
+        <div class="scroll-line"><span></span></div>
+    </div>
+
+    <div class="floating-metric metric-inflow">
+        <span>MONTHLY INFLOW</span>
+        <strong>₹42,500</strong>
+        <em>↗ 18.4%</em>
+    </div>
+
+    <div class="floating-metric metric-goal">
+        <span>SAVINGS GOAL</span>
+        <strong>72%</strong>
+        <div class="mini-progress"><i></i></div>
+        <small>₹7,200 of ₹10,000</small>
+    </div>
+
+    <div class="floating-signal">
+        <span class="signal-dot"></span>
+        <div>
+            <small>FINORA SIGNAL</small>
+            <strong>Spending is on track</strong>
+        </div>
+    </div>
+</section>
+
+<section class="ticker-strip">
+    <div class="ticker-track">
+        <span>TRACK</span><b>✦</b><span>UNDERSTAND</span><b>✦</b><span>PLAN</span><b>✦</b><span>SAVE</span><b>✦</b>
+        <span>TRACK</span><b>✦</b><span>UNDERSTAND</span><b>✦</b><span>PLAN</span><b>✦</b><span>SAVE</span><b>✦</b>
+    </div>
+</section>
+
+<section class="story-section" id="story">
+    <div class="story-orb"></div>
+    <div class="container story-layout">
+        <div class="story-copy">
+            <div class="eyebrow">01 / THE PROBLEM</div>
+            <h2>Money gets complicated when the picture is <span>scattered.</span></h2>
+            <p>
+                Income in one place. Cash expenses somewhere else. Bills in your gallery.
+                Goals in your head. Finora brings those pieces together so you can finally
+                see what is happening.
+            </p>
+            <a href="#features" class="text-link">See what changes <span>→</span></a>
+        </div>
+
+        <div class="story-visual">
+            <div class="story-image-wrap">
+                <img src="https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=1800&q=90"
+                     alt="Financial planning and analytics workspace" loading="lazy">
+                <div class="story-image-shade"></div>
+                <div class="story-image-label">FINORA / FINANCIAL COMMAND CENTER</div>
             </div>
 
-            <div class="container hero-grid">
-
-                <div class="hero-content">
-
-                    <span class="hero-badge">
-                        Smart Financial Awareness
-                    </span>
-
-                    <h1>
-                        Your money.<br>
-                        Your goals.<br>
-                        <span>One clear picture.</span>
-                    </h1>
-
-                    <p>
-                        Finora helps you understand where your money goes,
-                        build practical budgets and stay on track with
-                        the goals that matter to you.
-                    </p>
-
-                    <div class="hero-actions">
-                        <a href="signup.html" class="primary-btn">
-                            Start Planning
-                        </a>
-
-                        <a href="#how-it-works" class="secondary-btn">
-                            See How It Works
-                        </a>
-                    </div>
-
-                    <div class="hero-note">
-                        <span>✓</span>
-                        Built for financial awareness, not investment advice
-                    </div>
-
-                </div>
-
-
-                <div class="hero-floating-tag tag-income"><span>↗</span> CASHFLOW +18.4%</div>
-                <div class="hero-floating-tag tag-ai"><span>✦</span> FINORA INTELLIGENCE</div>
-
-                <div class="dashboard-preview">
-
-                    <div class="preview-top">
-                        <div>
-                            <span class="preview-label">Financial overview</span>
-                            <h3>This month</h3>
-                        </div>
-
-                        <span class="preview-status">On track</span>
-                    </div>
-
-                    <div class="preview-cards">
-
-                        <div class="preview-card">
-                            <span>Income</span>
-                            <strong>₹42,500</strong>
-                        </div>
-
-                        <div class="preview-card">
-                            <span>Spending</span>
-                            <strong>₹27,840</strong>
-                        </div>
-
-                    </div>
-
-                    <div class="goal-preview">
-
-                        <div class="goal-header">
-                            <div>
-                                <span>Monthly savings goal</span>
-                                <strong>₹10,000</strong>
-                            </div>
-
-                            <span class="goal-percentage">72%</span>
-                        </div>
-
-                        <div class="progress-track">
-                            <div class="progress-fill"></div>
-                        </div>
-
-                        <div class="goal-footer">
-                            <span>₹7,200 saved</span>
-                            <span>₹2,800 remaining</span>
-                        </div>
-
-                    </div>
-
-                    <div class="spending-preview">
-
-                        <div class="spending-header">
-                            <span>Spending overview</span>
-                            <span>Last 7 days</span>
-                        </div>
-
-                        <div class="chart-bars">
-                            <span style="height: 38%"></span>
-                            <span style="height: 57%"></span>
-                            <span style="height: 44%"></span>
-                            <span style="height: 75%"></span>
-                            <span style="height: 52%"></span>
-                            <span style="height: 88%"></span>
-                            <span style="height: 64%"></span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <section class="visual-break">
-            <div class="visual-break-image">
-                <img src="https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=1800&q=85" alt="Modern financial planning workspace" loading="lazy">
-                <div class="visual-break-overlay"></div>
-                <div class="visual-break-copy">
-                    <span class="section-tag">SEE THE WHOLE PICTURE</span>
-                    <h2>Numbers are data.<br><em>Direction is intelligence.</em></h2>
-                    <p>Finora turns everyday transactions into a visual map of where your money is going—and where you want it to go next.</p>
-                </div>
-                <div class="visual-data data-one"><strong>₹42.5K</strong><span>MONTHLY INFLOW</span></div>
-                <div class="visual-data data-two"><strong>72%</strong><span>GOAL PROGRESS</span></div>
-                <div class="visual-data data-three"><strong>−8.6%</strong><span>UNNECESSARY SPEND</span></div>
-            </div>
-        </section>
-
-
-        <section class="trusted-section">
-            <div class="container">
-
-                <p class="trusted-title">
-                    Bring your financial information together
-                </p>
-
-                <div class="trusted-items">
-
-                    <span>Bank Data</span>
-                    <span>Cash Expenses</span>
-                    <span>Online Payments</span>
-                    <span>Bills & Receipts</span>
-                    <span>Savings Goals</span>
-
-                </div>
-
-            </div>
-        </section>
-
-
-        <section class="section" id="features">
-
-            <div class="container">
-
-                <div class="section-heading">
-                    <span class="section-tag">WHAT FINORA DOES</span>
-
-                    <h2>
-                        From financial data<br>
-                        to useful decisions.
-                    </h2>
-
-                    <p>
-                        Finora turns scattered financial information into
-                        simple insights that help you understand and plan.
-                    </p>
-                </div>
-
-
-                <div class="features-grid">
-
-                    <div class="feature-card">
-                        <span class="feature-number">01</span>
-                        <h3>Smart Dashboard</h3>
-                        <p>
-                            See income, expenses, savings and financial
-                            progress in one simple overview.
-                        </p>
-                    </div>
-
-                    <div class="feature-card">
-                        <span class="feature-number">02</span>
-                        <h3>Expense Tracking</h3>
-                        <p>
-                            Track bank transactions, online payments,
-                            cash expenses and bills.
-                        </p>
-                    </div>
-
-                    <div class="feature-card">
-                        <span class="feature-number">03</span>
-                        <h3>Goal-Based Planning</h3>
-                        <p>
-                            Set savings targets and understand how your
-                            daily spending affects your goals.
-                        </p>
-                    </div>
-
-                    <div class="feature-card">
-                        <span class="feature-number">04</span>
-                        <h3>Smart Alerts</h3>
-                        <p>
-                            Get notified when your spending starts moving
-                            away from your planned financial path.
-                        </p>
-                    </div>
-
-                </div>
-
+            <div class="story-card story-card-one">
+                <span>SPENDING</span>
+                <strong>₹27,840</strong>
+                <small>this month</small>
             </div>
 
-        </section>
-
-
-        <section class="section how-section" id="how-it-works">
-
-            <div class="container">
-
-                <div class="section-heading">
-                    <span class="section-tag">HOW IT WORKS</span>
-
-                    <h2>
-                        A simple path to<br>
-                        better awareness.
-                    </h2>
-                </div>
-
-
-                <div class="steps-grid">
-
-                    <div class="step">
-                        <span>01</span>
-                        <h3>Connect your data</h3>
-                        <p>
-                            Add your financial information from supported
-                            sources or enter expenses manually.
-                        </p>
-                    </div>
-
-                    <div class="step">
-                        <span>02</span>
-                        <h3>Understand spending</h3>
-                        <p>
-                            Finora organizes transactions and identifies
-                            spending patterns.
-                        </p>
-                    </div>
-
-                    <div class="step">
-                        <span>03</span>
-                        <h3>Set your goals</h3>
-                        <p>
-                            Define how much you want to save and by when.
-                        </p>
-                    </div>
-
-                    <div class="step">
-                        <span>04</span>
-                        <h3>Stay on track</h3>
-                        <p>
-                            Monitor progress and receive useful alerts
-                            when your plan changes.
-                        </p>
-                    </div>
-
-                </div>
-
+            <div class="story-card story-card-two">
+                <span>GOAL PROGRESS</span>
+                <strong>72%</strong>
+                <small>on track</small>
             </div>
+        </div>
+    </div>
+</section>
 
-        </section>
+<section class="numbers-section">
+    <div class="container">
+        <div class="numbers-intro">
+            <div class="eyebrow">02 / ONE VIEW</div>
+            <h2>Everything important.<br><span>Nothing buried.</span></h2>
+        </div>
 
+        <div class="numbers-grid">
+            <article class="number-tile number-tile-large">
+                <span>01 / MONEY</span>
+                <strong>₹42.5K</strong>
+                <p>Know what comes in, what goes out, and what remains.</p>
+                <div class="tile-line"></div>
+            </article>
 
-        <section class="cta-section" id="about">
+            <article class="number-tile">
+                <span>02 / GOALS</span>
+                <strong>72<small>%</small></strong>
+                <p>Turn a savings target into something you can actually follow.</p>
+                <div class="tile-ring">◎</div>
+            </article>
 
-            <div class="container">
+            <article class="number-tile">
+                <span>03 / SIGNALS</span>
+                <strong>24/7</strong>
+                <p>Spot changes in your spending before they become surprises.</p>
+                <div class="tile-pulse"><i></i><i></i><i></i><i></i></div>
+            </article>
+        </div>
+    </div>
+</section>
 
-                <div class="cta-box">
-
-                    <div>
-                        <span class="section-tag">START TODAY</span>
-
-                        <h2>
-                            Give your money<br>
-                            a clearer direction.
-                        </h2>
-
-                        <p>
-                            Start building a simple picture of your
-                            financial life with Finora.
-                        </p>
-                    </div>
-
-                    <a href="signup.html" class="primary-btn">
-                        Create Your Account
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <footer class="footer">
-
-        <div class="container footer-content">
-
+<section class="features-section" id="features">
+    <div class="container">
+        <div class="features-heading">
             <div>
-                <a href="index.html" class="logo">Finora</a>
-
-                <p>
-                    Personal financial awareness and planning.
-                </p>
+                <div class="eyebrow">03 / THE SYSTEM</div>
+                <h2>From raw numbers<br>to <span>clear direction.</span></h2>
             </div>
-
-            <div class="footer-right">
-                <span>© 2026 Finora</span>
-                <span>Financial awareness, not investment advice</span>
-            </div>
-
+            <p>Finora is built around the everyday decisions that shape your financial life.</p>
         </div>
 
-    </footer>
+        <div class="feature-list">
+            <article class="feature-row">
+                <div class="feature-index">01</div>
+                <div class="feature-title"><h3>See everything</h3><span>01 — Overview</span></div>
+                <p>Income, spending, savings and your financial position in one focused dashboard.</p>
+                <div class="feature-arrow">↗</div>
+            </article>
 
+            <article class="feature-row">
+                <div class="feature-index">02</div>
+                <div class="feature-title"><h3>Track naturally</h3><span>02 — Expenses</span></div>
+                <p>Record cash, online payments and bills without turning finance into paperwork.</p>
+                <div class="feature-arrow">↗</div>
+            </article>
 
-    <script src="js/main.js"></script>
-    <script>
-        const heroVideo = document.querySelector(".hero-video");
-        if (heroVideo) heroVideo.play().catch(function () {});
-    </script>
+            <article class="feature-row">
+                <div class="feature-index">03</div>
+                <div class="feature-title"><h3>Build toward something</h3><span>03 — Goals</span></div>
+                <p>Set savings targets and see how your current choices affect the road ahead.</p>
+                <div class="feature-arrow">↗</div>
+            </article>
+
+            <article class="feature-row">
+                <div class="feature-index">04</div>
+                <div class="feature-title"><h3>Catch the signal</h3><span>04 — Alerts</span></div>
+                <p>Get clear warnings when spending starts moving away from the plan you set.</p>
+                <div class="feature-arrow">↗</div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="how-section-new" id="how-it-works">
+    <div class="container">
+        <div class="eyebrow">04 / THE FLOW</div>
+        <div class="how-heading">
+            <h2>Four moves.<br><span>One clearer future.</span></h2>
+        </div>
+
+        <div class="flow-line">
+            <div class="flow-step">
+                <span>01</span>
+                <div class="flow-marker">01</div>
+                <h3>Bring it in</h3>
+                <p>Add your financial information and everyday expenses.</p>
+            </div>
+            <div class="flow-step">
+                <span>02</span>
+                <div class="flow-marker">02</div>
+                <h3>Make it visible</h3>
+                <p>See your spending patterns and financial position.</p>
+            </div>
+            <div class="flow-step">
+                <span>03</span>
+                <div class="flow-marker">03</div>
+                <h3>Set the target</h3>
+                <p>Create a savings goal that gives your money direction.</p>
+            </div>
+            <div class="flow-step">
+                <span>04</span>
+                <div class="flow-marker">04</div>
+                <h3>Stay in control</h3>
+                <p>Watch signals, progress and changes as you move forward.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="final-cta">
+    <div class="final-cta-image"></div>
+    <div class="final-cta-shade"></div>
+    <div class="container final-cta-content">
+        <div class="eyebrow">05 / YOUR TURN</div>
+        <h2>Make your money<br><span>make more sense.</span></h2>
+        <p>Start with a clearer picture. Build from there.</p>
+        <a href="signup.html" class="cinema-primary">Enter Finora <span>↗</span></a>
+    </div>
+    <div class="final-cta-mark">F</div>
+</section>
+
+</main>
+
+<footer class="landing-footer">
+    <div class="landing-footer-inner">
+        <a href="index.html" class="landing-logo"><span class="landing-logo-mark">F</span><span>FINORA</span></a>
+        <span>© 2026 Finora</span>
+        <span>Financial awareness, not investment advice</span>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+    const cinemaVideo = document.querySelector(".cinema-video");
+    if (cinemaVideo) {
+        cinemaVideo.play().catch(function () {});
+        cinemaVideo.addEventListener("error", function () {
+            document.querySelector(".cinema-media")?.classList.add("video-failed");
+        });
+    }
+</script>
 
 </body>
 </html>
