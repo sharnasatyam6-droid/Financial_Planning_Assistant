@@ -8506,3 +8506,372 @@ body.dashboard-page{
     .dashboard-page .finora-main{margin-left:0 !important}
     .dashboard-page .sidebar-top{padding-bottom:14px}
 }
+
+
+/* =========================================================
+   FINORA // TYPOGRAPHY VISIBILITY HARD RESET
+   Final layer: every important text role gets an explicit
+   readable color. This intentionally wins over legacy CSS.
+========================================================= */
+
+html,body{color:#f4f7f2}
+
+.dashboard-page,
+.dashboard-page .finora-main,
+.dashboard-page .finora-main *{
+    --text-main:#f4f7f2;
+    --text-soft:#c3cec7;
+    --text-muted:#96a39b;
+    --text-dim:#718078;
+}
+
+.dashboard-page .finora-main h1,
+.dashboard-page .finora-main h2,
+.dashboard-page .finora-main h3,
+.dashboard-page .finora-main h4,
+.dashboard-page .finora-main h5,
+.dashboard-page .finora-main h6,
+.dashboard-page .finora-main strong,
+.dashboard-page .finora-main b{
+    color:#f4f7f2 !important;
+    opacity:1 !important;
+    text-shadow:none !important;
+}
+
+.dashboard-page .finora-main p,
+.dashboard-page .finora-main li,
+.dashboard-page .finora-main label{
+    color:#c3cec7 !important;
+    opacity:1 !important;
+}
+
+.dashboard-page .finora-main small,
+.dashboard-page .finora-main .muted,
+.dashboard-page .finora-main .subtitle,
+.dashboard-page .finora-main .description,
+.dashboard-page .finora-main .panel-description,
+.dashboard-page .finora-main .header-description,
+.dashboard-page .finora-main .budget-small,
+.dashboard-page .finora-main .empty-expenses{
+    color:#96a39b !important;
+    opacity:1 !important;
+}
+
+.dashboard-page .finora-main span{
+    opacity:1 !important;
+}
+
+/* Titles and values */
+.dashboard-page .position-number,
+.dashboard-page .money-card strong,
+.dashboard-page .analytics-card strong,
+.dashboard-page .goal-stat strong,
+.dashboard-page .budget-card strong,
+.dashboard-page .intelligence-score,
+.dashboard-page .simulation-result strong,
+.dashboard-page .simulation-result h3,
+.dashboard-page .alert-total-card strong{
+    color:#ffffff !important;
+    opacity:1 !important;
+}
+
+/* Explicit secondary text */
+.dashboard-page .position-breakdown,
+.dashboard-page .position-breakdown *,
+.dashboard-page .progress-info,
+.dashboard-page .progress-info *,
+.dashboard-page .dashboard-goal-stats,
+.dashboard-page .dashboard-goal-stats *,
+.dashboard-page .signal-side-stats,
+.dashboard-page .signal-side-stats *,
+.dashboard-page .goal-stat span,
+.dashboard-page .budget-row span{
+    color:#aebbb3 !important;
+    opacity:1 !important;
+}
+
+/* Card labels */
+.dashboard-page .panel-label,
+.dashboard-page .panel-top .panel-label,
+.dashboard-page .money-card-top,
+.dashboard-page .analytics-card-top,
+.dashboard-page .expense-history-label,
+.dashboard-page .sidebar-section-title{
+    opacity:1 !important;
+}
+
+.dashboard-page .panel-label,
+.dashboard-page .expense-history-label{
+    color:#c9ff4d !important;
+}
+
+.dashboard-page .money-card-top,
+.dashboard-page .analytics-card-top{
+    color:#aebbb3 !important;
+}
+
+/* Navigation */
+.dashboard-page .finora-sidebar,
+.dashboard-page .finora-sidebar *{
+    opacity:1 !important;
+}
+.dashboard-page .finora-sidebar .finora-brand,
+.dashboard-page .finora-sidebar .finora-brand span{
+    color:#ffffff !important;
+}
+.dashboard-page .finora-sidebar .sidebar-section-title{
+    color:#69776f !important;
+}
+.dashboard-page .finora-sidebar .finora-nav-link{
+    color:#aeb9b2 !important;
+}
+.dashboard-page .finora-sidebar .finora-nav-link .nav-icon{
+    color:inherit !important;
+}
+.dashboard-page .finora-sidebar .finora-nav-link.active,
+.dashboard-page .finora-sidebar .finora-nav-link.active *{
+    color:#07100d !important;
+}
+.dashboard-page .finora-sidebar .sidebar-note,
+.dashboard-page .finora-sidebar .sidebar-note *{
+    color:#a0ada5 !important;
+}
+.dashboard-page .finora-sidebar .sidebar-note-dot{
+    background:#36d59a !important;
+}
+.dashboard-page .finora-sidebar .finora-logout{
+    color:#9ba69f !important;
+}
+
+/* Header */
+.dashboard-page .finora-header *{
+    opacity:1 !important;
+}
+.dashboard-page .header-eyebrow{
+    color:#c9ff4d !important;
+}
+.dashboard-page .header-description{
+    color:#96a39b !important;
+}
+.dashboard-page .today-badge,
+.dashboard-page .today-badge *{
+    color:#d2dbd5 !important;
+}
+.dashboard-page .profile-chip,
+.dashboard-page .profile-chip *{
+    color:#f4f7f2 !important;
+}
+.dashboard-page .profile-avatar{
+    color:#07100d !important;
+}
+
+/* Buttons and links */
+.dashboard-page a{
+    opacity:1 !important;
+}
+.dashboard-page .goal-view-link,
+.dashboard-page .panel-action,
+.dashboard-page a.text-link{
+    color:#c9ff4d !important;
+}
+.dashboard-page button{
+    opacity:1 !important;
+}
+.dashboard-page button:not(.finora-nav-link):not(.finora-logout){
+    color:#07100d !important;
+}
+
+/* Forms */
+.dashboard-page input,
+.dashboard-page textarea,
+.dashboard-page select{
+    color:#f4f7f2 !important;
+    -webkit-text-fill-color:#f4f7f2 !important;
+}
+.dashboard-page input::placeholder,
+.dashboard-page textarea::placeholder{
+    color:#718078 !important;
+    -webkit-text-fill-color:#718078 !important;
+    opacity:1 !important;
+}
+.dashboard-page select option{
+    color:#f4f7f2 !important;
+    background:#0b1410 !important;
+}
+.dashboard-page .finora-input-group label,
+.dashboard-page .expense-form-row label,
+.dashboard-page .goal-form-group label,
+.dashboard-page .simulation-field label{
+    color:#c3cec7 !important;
+}
+
+/* Tables / lists */
+.dashboard-page table,
+.dashboard-page table *{
+    opacity:1 !important;
+}
+.dashboard-page table th{
+    color:#85938b !important;
+}
+.dashboard-page table td{
+    color:#e0e8e2 !important;
+}
+
+/* Status colors */
+.dashboard-page .position-status,
+.dashboard-page .status-good,
+.dashboard-page .success,
+.dashboard-page .completed{
+    color:#36d59a !important;
+}
+.dashboard-page .warning,
+.dashboard-page .status-warning{
+    color:#c9ff4d !important;
+}
+.dashboard-page .danger,
+.dashboard-page .status-danger,
+.dashboard-page .failed{
+    color:#ff8585 !important;
+}
+
+/* Charts / canvas surroundings */
+.dashboard-page .chart-container *,
+.dashboard-page .trend-chart-container *{
+    opacity:1 !important;
+}
+
+/* Insights */
+.dashboard-page .intelligence-flow-row,
+.dashboard-page .intelligence-flow-row *{
+    color:#e4ece6 !important;
+}
+.dashboard-page .intelligence-flow-row p,
+.dashboard-page .intelligence-insights-list,
+.dashboard-page .intelligence-disclaimer{
+    color:#96a39b !important;
+}
+.dashboard-page .intelligence-insights-list *{
+    color:#cbd5ce !important;
+}
+.dashboard-page .simulation-result-grid *,
+.dashboard-page .simulation-result-header *{
+    color:#e8efe9 !important;
+}
+.dashboard-page .simulation-empty{
+    color:#718078 !important;
+}
+
+/* Alerts */
+.dashboard-page .alerts-panel *,
+.dashboard-page .alert-awareness-panel *{
+    opacity:1 !important;
+}
+.dashboard-page .alerts-panel .panel-description,
+.dashboard-page .alert-awareness-panel{
+    color:#96a39b !important;
+}
+
+/* Landing page — lock its typography separately */
+.finora-landing,
+.finora-landing *{
+    opacity:1;
+}
+.finora-landing h1,
+.finora-landing h2,
+.finora-landing h3,
+.finora-landing h4,
+.finora-landing strong{
+    color:#f4f7f2 !important;
+}
+.finora-landing p{
+    color:#a8b3ac !important;
+}
+.finora-landing .section-tag,
+.finora-landing .hero-kicker,
+.finora-landing .eyebrow,
+.finora-landing .feature-number{
+    color:#c9ff4d !important;
+}
+.finora-landing a{opacity:1 !important}
+
+/* Auth pages */
+.auth-page,
+.auth-page *{
+    opacity:1 !important;
+}
+.auth-page h1,
+.auth-page h2,
+.auth-page h3,
+.auth-page strong{
+    color:#ffffff !important;
+}
+.auth-page p{
+    color:#aab7ae !important;
+}
+.auth-page label{
+    color:#c3cec7 !important;
+}
+.auth-page input{
+    color:#ffffff !important;
+    -webkit-text-fill-color:#ffffff !important;
+}
+.auth-page input::placeholder{
+    color:#66756d !important;
+    -webkit-text-fill-color:#66756d !important;
+}
+.auth-page .auth-submit{
+    color:#07100d !important;
+}
+.auth-page .secondary-auth-btn{
+    color:#e8eee9 !important;
+}
+
+/* Onboarding */
+.onboarding-page,
+.onboarding-page *{
+    opacity:1 !important;
+}
+.onboarding-page h1,
+.onboarding-page h2,
+.onboarding-page h3{
+    color:#ffffff !important;
+}
+.onboarding-page p,
+.onboarding-page .auth-subtitle{
+    color:#aab7ae !important;
+}
+.onboarding-page label{
+    color:#c3cec7 !important;
+}
+.onboarding-page input{
+    color:#ffffff !important;
+    -webkit-text-fill-color:#ffffff !important;
+}
+.onboarding-page input::placeholder{
+    color:#66756d !important;
+    -webkit-text-fill-color:#66756d !important;
+}
+.onboarding-page .auth-button{
+    color:#07100d !important;
+}
+
+/* Prevent old utility classes from producing invisible text */
+.dashboard-page .text-muted,
+.dashboard-page .text-secondary,
+.dashboard-page .text-dark,
+.dashboard-page .text-black{
+    color:#aebbb3 !important;
+}
+.dashboard-page .text-white{color:#ffffff !important}
+
+/* Footer */
+.dashboard-page .finora-footer,
+.dashboard-page .finora-footer *{
+    color:#68756d !important;
+}
+
+/* Mobile */
+@media(max-width:700px){
+    .dashboard-page .finora-main h1{font-size:clamp(1.7rem,7vw,2.4rem)}
+    .dashboard-page .finora-main h2{font-size:clamp(1.35rem,6vw,1.9rem)}
+}
