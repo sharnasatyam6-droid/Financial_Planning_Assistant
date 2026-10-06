@@ -5841,3 +5841,819 @@ body::after {
         text-align: left;
     }
 }
+
+
+/* =========================================================
+   FINORA // NEO-FINANCE VISUAL SYSTEM
+   A sharper, darker visual layer built on the existing UI.
+========================================================= */
+
+:root {
+    --background: #f3f5f1;
+    --surface: #ffffff;
+    --surface-dark: #101613;
+    --text: #0b120e;
+    --muted: #69756e;
+    --border: #dfe5df;
+    --primary: #176b5b;
+    --primary-dark: #0b3028;
+    --accent: #d8f36a;
+    --accent-soft: #edf7bd;
+    --success: #176b5b;
+    --ink: #0b120e;
+    --glow: rgba(216, 243, 106, .24);
+}
+
+/* ---------- global atmosphere ---------- */
+
+body {
+    background:
+        radial-gradient(circle at 8% 0%, rgba(216,243,106,.16), transparent 24rem),
+        radial-gradient(circle at 92% 8%, rgba(23,107,91,.09), transparent 28rem),
+        var(--background);
+}
+
+::selection {
+    background: var(--accent);
+    color: var(--ink);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: .035;
+    background-image:
+        linear-gradient(rgba(0,0,0,.7) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,.7) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: linear-gradient(to bottom, black, transparent 75%);
+}
+
+/* ---------- landing page ---------- */
+
+.navbar {
+    background: rgba(243,245,241,.78);
+    border-bottom: 1px solid rgba(11,18,14,.09);
+    box-shadow: 0 10px 35px rgba(11,18,14,.035);
+}
+
+.logo {
+    color: var(--ink);
+    letter-spacing: -1.5px;
+}
+
+.logo::before {
+    content: "◒";
+    display: inline-block;
+    margin-right: 7px;
+    color: var(--primary);
+    transform: rotate(-18deg);
+}
+
+.nav-links a,
+.login-link {
+    position: relative;
+    color: #455049;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 100%;
+    bottom: -7px;
+    height: 2px;
+    background: var(--primary);
+    transition: .25s ease;
+}
+
+.nav-links a:hover::after {
+    right: 0;
+}
+
+.primary-btn {
+    min-height: 48px;
+    padding: 0 22px;
+    border-radius: 7px;
+    background: var(--ink);
+    box-shadow: 0 8px 22px rgba(11,18,14,.14);
+    transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+}
+
+.primary-btn:hover {
+    background: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px rgba(23,107,91,.22);
+}
+
+.secondary-btn {
+    min-height: 48px;
+    border-radius: 7px;
+    border-color: #cbd4cd;
+    background: rgba(255,255,255,.55);
+}
+
+.hero {
+    position: relative;
+    padding: 115px 0 105px;
+    background:
+        radial-gradient(circle at 78% 48%, rgba(216,243,106,.19), transparent 18rem);
+}
+
+.hero::before {
+    content: "FINORA / 01";
+    position: absolute;
+    top: 40px;
+    right: 5%;
+    color: rgba(11,18,14,.14);
+    font: 800 10px/1 "Manrope", sans-serif;
+    letter-spacing: .28em;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-badge {
+    padding: 8px 13px;
+    border: 1px solid rgba(23,107,91,.18);
+    border-radius: 4px;
+    background: rgba(237,247,189,.72);
+    color: var(--primary-dark);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    font-size: clamp(54px, 6.7vw, 92px);
+    line-height: .94;
+    letter-spacing: -5px;
+}
+
+.hero h1 span {
+    color: var(--primary);
+    position: relative;
+}
+
+.hero h1 span::after {
+    content: "";
+    position: absolute;
+    height: 8px;
+    left: 0;
+    right: 8%;
+    bottom: -4px;
+    background: var(--accent);
+    z-index: -1;
+}
+
+.hero-content > p {
+    max-width: 570px;
+    font-size: 17px;
+}
+
+.dashboard-preview {
+    position: relative;
+    overflow: hidden;
+    padding: 26px;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 22px;
+    background:
+        linear-gradient(145deg, rgba(255,255,255,.12), transparent 45%),
+        #101613;
+    color: white;
+    box-shadow:
+        0 35px 90px rgba(11,18,14,.22),
+        0 0 0 1px rgba(216,243,106,.07);
+    transform: rotate(1.2deg);
+    transition: transform .35s ease;
+}
+
+.dashboard-preview:hover {
+    transform: rotate(0deg) translateY(-7px);
+}
+
+.dashboard-preview::before {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    right: -90px;
+    top: -100px;
+    border-radius: 50%;
+    background: rgba(216,243,106,.13);
+    filter: blur(8px);
+}
+
+.preview-top,
+.preview-cards,
+.goal-preview,
+.spending-preview {
+    position: relative;
+    z-index: 1;
+}
+
+.preview-label,
+.preview-card span,
+.spending-header,
+.goal-footer {
+    color: #91a099;
+}
+
+.preview-top h3,
+.preview-card strong,
+.goal-header strong {
+    color: #f7faf7;
+}
+
+.preview-status {
+    background: rgba(216,243,106,.13);
+    color: var(--accent);
+    border: 1px solid rgba(216,243,106,.25);
+}
+
+.preview-card,
+.goal-preview,
+.spending-preview {
+    border-color: rgba(255,255,255,.1);
+    background: rgba(255,255,255,.045);
+}
+
+.progress-track {
+    background: rgba(255,255,255,.12);
+}
+
+.progress-fill,
+.chart-bars span {
+    background: var(--accent);
+    box-shadow: 0 0 18px rgba(216,243,106,.25);
+}
+
+.trusted-section {
+    background: var(--ink);
+    border: 0;
+    color: white;
+}
+
+.trusted-title {
+    color: #7e8b84;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.trusted-items span {
+    border-color: rgba(255,255,255,.11);
+    background: rgba(255,255,255,.035);
+    color: #bdc7c0;
+    border-radius: 4px;
+}
+
+.section {
+    position: relative;
+}
+
+.section-tag {
+    letter-spacing: .18em;
+}
+
+.feature-card,
+.step {
+    position: relative;
+}
+
+.feature-card {
+    min-height: 285px;
+    border-radius: 5px;
+    border-color: #d8e0d9;
+    background: rgba(255,255,255,.72);
+    overflow: hidden;
+}
+
+.feature-card::after {
+    content: "";
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    right: -35px;
+    bottom: -35px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: .24;
+    transition: .3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary);
+    box-shadow: 0 22px 45px rgba(11,18,14,.1);
+}
+
+.feature-card:hover::after {
+    transform: scale(1.8);
+}
+
+.feature-number {
+    font-family: "Manrope", sans-serif;
+    color: var(--primary);
+    letter-spacing: .12em;
+}
+
+.feature-card h3 {
+    font-size: 21px;
+}
+
+.how-section {
+    background: var(--ink);
+    color: white;
+}
+
+.how-section .section-heading h2 {
+    color: white;
+}
+
+.how-section .section-heading p,
+.how-section .step p {
+    color: #89958e;
+}
+
+.how-section .step {
+    border-top-color: var(--accent);
+}
+
+.how-section .step > span {
+    color: var(--accent);
+}
+
+.cta-box {
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    background: var(--ink);
+    box-shadow: 0 25px 65px rgba(11,18,14,.18);
+}
+
+.cta-box::after {
+    content: "FINORA";
+    position: absolute;
+    right: -20px;
+    bottom: -65px;
+    color: rgba(216,243,106,.06);
+    font: 900 150px/1 "Manrope", sans-serif;
+    letter-spacing: -.08em;
+}
+
+.cta-box > * {
+    position: relative;
+    z-index: 1;
+}
+
+.cta-box .primary-btn {
+    background: var(--accent);
+    color: var(--ink);
+}
+
+.footer {
+    background: #edf0ec;
+}
+
+/* ---------- authentication ---------- */
+
+.auth-page {
+    background:
+        radial-gradient(circle at 20% 20%, rgba(216,243,106,.12), transparent 25rem),
+        #f1f4f0;
+}
+
+.auth-brand {
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 85% 15%, rgba(216,243,106,.2), transparent 20rem),
+        var(--ink);
+}
+
+.auth-brand::after {
+    content: "F";
+    position: absolute;
+    right: -40px;
+    bottom: -100px;
+    color: rgba(216,243,106,.055);
+    font: 900 380px/1 "Manrope", sans-serif;
+}
+
+.auth-brand-content,
+.auth-logo,
+.auth-brand-footer {
+    position: relative;
+    z-index: 1;
+}
+
+.auth-logo::before {
+    content: "◒";
+    color: var(--accent);
+    margin-right: 7px;
+}
+
+.auth-brand-content h1 {
+    font-size: clamp(45px, 5vw, 72px);
+    letter-spacing: -3.5px;
+}
+
+.auth-brand-content .section-tag {
+    color: var(--accent);
+}
+
+.auth-brand-content p {
+    color: #aebbb3;
+}
+
+.auth-form-section {
+    background: rgba(255,255,255,.5);
+}
+
+.auth-form-wrapper {
+    padding: 38px;
+    border: 1px solid #dce3dd;
+    border-radius: 8px;
+    background: rgba(255,255,255,.78);
+    box-shadow: 0 25px 80px rgba(11,18,14,.07);
+    backdrop-filter: blur(18px);
+}
+
+.auth-submit {
+    border-radius: 6px;
+    background: var(--ink);
+}
+
+.auth-submit:hover {
+    background: var(--primary);
+    transform: translateY(-2px);
+}
+
+.secondary-auth-btn {
+    border-radius: 6px;
+}
+
+/* ---------- dashboard family ---------- */
+
+.dashboard-page {
+    background:
+        radial-gradient(circle at 80% 0%, rgba(216,243,106,.12), transparent 26rem),
+        #eef2ee;
+}
+
+.finora-sidebar {
+    background:
+        linear-gradient(180deg, #0d1511 0%, #101a15 100%);
+    border-right: 1px solid rgba(255,255,255,.07);
+    box-shadow: 12px 0 45px rgba(11,18,14,.08);
+}
+
+.finora-brand {
+    letter-spacing: -1px;
+}
+
+.brand-mark {
+    background: var(--accent) !important;
+    color: var(--ink) !important;
+    box-shadow: 0 0 24px rgba(216,243,106,.22);
+}
+
+.sidebar-section-title {
+    color: #64716a;
+    letter-spacing: .18em;
+}
+
+.finora-nav-link {
+    border: 1px solid transparent;
+    border-radius: 5px;
+    color: #87938c;
+    transition: .2s ease;
+}
+
+.finora-nav-link:hover {
+    background: rgba(255,255,255,.045);
+    color: white;
+    border-color: rgba(255,255,255,.06);
+    transform: translateX(3px);
+}
+
+.finora-nav-link.active {
+    background: rgba(216,243,106,.12);
+    border-color: rgba(216,243,106,.22);
+    color: var(--accent);
+    box-shadow: inset 3px 0 0 var(--accent);
+}
+
+.nav-icon {
+    color: inherit;
+}
+
+.finora-main {
+    background:
+        linear-gradient(rgba(11,18,14,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(11,18,14,.025) 1px, transparent 1px);
+    background-size: 42px 42px;
+}
+
+.finora-header {
+    padding-bottom: 30px;
+}
+
+.header-eyebrow,
+.panel-label {
+    color: var(--primary) !important;
+    letter-spacing: .18em;
+}
+
+.header-left h1 {
+    letter-spacing: -2px;
+}
+
+.today-badge {
+    border: 1px solid #d5ded7;
+    background: rgba(255,255,255,.72);
+    border-radius: 4px;
+}
+
+.today-dot {
+    background: var(--accent) !important;
+    box-shadow: 0 0 0 4px rgba(216,243,106,.2);
+}
+
+.profile-chip {
+    border-radius: 5px;
+    border-color: #d6dfd8;
+    box-shadow: 0 8px 25px rgba(11,18,14,.05);
+}
+
+.profile-avatar {
+    background: var(--ink) !important;
+    color: var(--accent) !important;
+}
+
+.money-card,
+.dashboard-panel,
+.analytics-card {
+    border-radius: 5px !important;
+    border-color: #d8e0d9 !important;
+    background: rgba(255,255,255,.8) !important;
+    box-shadow: 0 12px 35px rgba(11,18,14,.045) !important;
+    backdrop-filter: blur(10px);
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.money-card:hover,
+.analytics-card:hover,
+.dashboard-panel:hover {
+    border-color: rgba(23,107,91,.35) !important;
+    box-shadow: 0 20px 45px rgba(11,18,14,.08) !important;
+}
+
+.primary-money-card {
+    background: var(--ink) !important;
+    color: white;
+    border-color: var(--ink) !important;
+}
+
+.primary-money-card h2,
+.primary-money-card p,
+.primary-money-card .money-card-top {
+    color: white !important;
+}
+
+.primary-money-card .money-icon {
+    color: var(--accent);
+}
+
+.money-icon {
+    border-radius: 4px;
+}
+
+.position-status {
+    border-radius: 4px !important;
+    background: var(--accent-soft) !important;
+    color: var(--primary-dark) !important;
+}
+
+.position-progress .progress-fill,
+.dashboard-goal-fill {
+    background: var(--primary) !important;
+    box-shadow: 0 0 16px rgba(23,107,91,.2);
+}
+
+.position-progress .progress-track,
+.dashboard-goal-track {
+    background: #dce5df !important;
+}
+
+.priority-panel {
+    background: var(--ink) !important;
+    color: white;
+    border-color: var(--ink) !important;
+}
+
+.priority-panel h2,
+.priority-panel h3,
+.priority-panel p {
+    color: white !important;
+}
+
+.priority-panel p {
+    color: #9ba8a0 !important;
+}
+
+.priority-icon,
+.insight-icon,
+.signal-highlight-icon {
+    background: var(--accent) !important;
+    color: var(--ink) !important;
+}
+
+.priority-footer {
+    border-color: rgba(255,255,255,.1) !important;
+    color: #9ba8a0 !important;
+}
+
+.goal-view-link,
+.panel-action {
+    color: var(--primary) !important;
+    font-weight: 800;
+}
+
+.signal-highlight {
+    border-color: rgba(23,107,91,.16) !important;
+    background: linear-gradient(135deg, rgba(237,247,189,.7), rgba(255,255,255,.55)) !important;
+}
+
+.analytics-card-top span:last-child {
+    color: var(--primary);
+}
+
+.health-card {
+    background: linear-gradient(135deg, #f8faef, #ffffff) !important;
+}
+
+.insight-panel {
+    background:
+        linear-gradient(135deg, rgba(216,243,106,.16), transparent 42%),
+        rgba(255,255,255,.86) !important;
+}
+
+.trend-chart-container,
+.chart-container {
+    border-radius: 4px;
+}
+
+.roadmap-item {
+    border-radius: 5px !important;
+    border-color: #d9e1da !important;
+    background: rgba(255,255,255,.7) !important;
+}
+
+.roadmap-item.completed {
+    border-color: rgba(23,107,91,.28) !important;
+}
+
+.roadmap-number {
+    color: var(--primary) !important;
+}
+
+.roadmap-check {
+    background: var(--accent) !important;
+    color: var(--ink) !important;
+}
+
+.finora-logout {
+    border-radius: 5px !important;
+}
+
+.finora-footer {
+    border-color: #d7dfd8 !important;
+}
+
+/* ---------- forms / expenses / goals / budget ---------- */
+
+.expense-form-card,
+.expense-list-card,
+.onboarding-page .auth-box {
+    border-radius: 6px;
+    border-color: #d7e0d9;
+    box-shadow: 0 20px 55px rgba(11,18,14,.06);
+}
+
+.expense-form-card input,
+.expense-form-card select,
+.onboarding-page .input-group input,
+.onboarding-page .input-group select {
+    border-radius: 5px;
+    border-color: #cfd9d2;
+}
+
+.expense-form-card input:focus,
+.expense-form-card select:focus,
+.onboarding-page .input-group input:focus,
+.onboarding-page .input-group select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(23,107,91,.09);
+}
+
+.expense-item {
+    border-radius: 5px;
+    background: rgba(255,255,255,.72);
+    border-color: #dce3dd;
+    transition: .2s ease;
+}
+
+.expense-item:hover {
+    transform: translateX(4px);
+    border-color: rgba(23,107,91,.3);
+}
+
+.onboarding-page {
+    background:
+        radial-gradient(circle at 15% 10%, rgba(216,243,106,.22), transparent 25rem),
+        radial-gradient(circle at 90% 90%, rgba(23,107,91,.1), transparent 30rem),
+        #eef2ee;
+}
+
+.onboarding-page .auth-button {
+    border-radius: 5px;
+    background: var(--ink);
+}
+
+.onboarding-page .auth-button:hover {
+    background: var(--primary);
+}
+
+/* ---------- motion ---------- */
+
+@keyframes finora-rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-content,
+.dashboard-preview,
+.money-card,
+.dashboard-panel,
+.analytics-card,
+.feature-card {
+    animation: finora-rise .65s cubic-bezier(.2,.7,.2,1) both;
+}
+
+.money-card:nth-child(2) { animation-delay: .06s; }
+.money-card:nth-child(3) { animation-delay: .12s; }
+.money-card:nth-child(4) { animation-delay: .18s; }
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+/* ---------- mobile polish ---------- */
+
+@media (max-width: 900px) {
+    .auth-form-wrapper {
+        padding: 28px;
+    }
+
+    .hero::before {
+        display: none;
+    }
+
+    .finora-sidebar {
+        box-shadow: none;
+    }
+}
+
+@media (max-width: 600px) {
+    body::before {
+        opacity: .018;
+        background-size: 32px 32px;
+    }
+
+    .hero {
+        padding-top: 80px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+        letter-spacing: -3px;
+    }
+
+    .dashboard-preview {
+        transform: none;
+    }
+
+    .auth-form-wrapper {
+        padding: 22px;
+    }
+}
