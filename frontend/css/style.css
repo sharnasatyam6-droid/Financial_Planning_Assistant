@@ -6742,3 +6742,599 @@ body { background:#07100d; }
  .visual-break-copy h2{font-size:43px;letter-spacing:-2.5px}.visual-data{padding:10px 12px}
  .visual-data strong{font-size:18px}.data-one{right:5%;top:8%}.data-two{left:5%;right:auto;bottom:10%}.data-three{right:5%;bottom:28%}.tag-ai{left:8%;bottom:6%}
 }
+
+/* =========================================================
+   FINORA // FULL PRODUCT ART DIRECTION
+   ========================================================= */
+
+:root{
+    --neo-bg:#07100d;
+    --neo-surface:#0d1914;
+    --neo-surface-2:#12221b;
+    --neo-line:rgba(255,255,255,.10);
+    --neo-text:#f5f8f4;
+    --neo-muted:#aab7ae;
+    --neo-lime:#c9ff4d;
+    --neo-green:#35d49a;
+}
+
+body{
+    text-rendering:optimizeLegibility;
+    -webkit-font-smoothing:antialiased;
+}
+
+button,a{ -webkit-tap-highlight-color:transparent; }
+
+::selection{
+    background:var(--neo-lime);
+    color:#07100d;
+}
+
+/* --- landing: make the whole page feel like one film --- */
+body:not(.dashboard-page):not(.auth-page):not(.onboarding-page){
+    background:#07100d;
+}
+
+.hero{
+    min-height:920px;
+}
+
+.hero::after{
+    content:"FINORA / PERSONAL FINANCIAL INTELLIGENCE";
+    position:absolute;
+    right:28px;
+    bottom:28px;
+    color:rgba(255,255,255,.22);
+    font:800 9px/1 "DM Sans",sans-serif;
+    letter-spacing:2px;
+    writing-mode:vertical-rl;
+    pointer-events:none;
+}
+
+.hero-content{
+    position:relative;
+}
+
+.hero-content::before{
+    content:"";
+    position:absolute;
+    width:120px;
+    height:120px;
+    left:-42px;
+    top:10px;
+    border:1px solid rgba(201,255,77,.14);
+    border-radius:50%;
+    box-shadow:0 0 80px rgba(201,255,77,.07);
+    pointer-events:none;
+}
+
+.dashboard-preview{
+    overflow:hidden;
+}
+
+.dashboard-preview::after{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    right:-80px;
+    bottom:-100px;
+    border-radius:50%;
+    background:rgba(201,255,77,.13);
+    filter:blur(40px);
+    pointer-events:none;
+}
+
+.preview-card strong,
+.preview-top h3,
+.goal-header strong,
+.spending-preview,
+.preview-card,
+.goal-preview{
+    position:relative;
+    z-index:1;
+}
+
+.preview-card strong{
+    color:#ffffff !important;
+}
+
+.preview-card span,
+.preview-label,
+.goal-header div span,
+.goal-footer,
+.spending-header{
+    color:#aab7ae !important;
+}
+
+.preview-top h3{
+    color:#f5f8f4 !important;
+}
+
+.hero-note{
+    color:#aab7ae !important;
+}
+
+/* --- cinematic image section --- */
+.visual-break{
+    position:relative;
+    padding-top:20px;
+}
+
+.visual-break-image{
+    box-shadow:0 30px 100px rgba(0,0,0,.4);
+    border:1px solid rgba(255,255,255,.10);
+}
+
+.visual-break-copy h2,
+.visual-break-copy p,
+.visual-break-copy .section-tag{
+    position:relative;
+    z-index:2;
+}
+
+/* --- light sections need actual contrast --- */
+.section-heading h2,
+.section-heading p,
+.feature-card h3,
+.feature-card p,
+.step h3,
+.step p,
+.trusted-title{
+    color:#101a15 !important;
+}
+
+.feature-card p,
+.step p{
+    color:#58675f !important;
+}
+
+.feature-number,
+.step>span{
+    color:#176b5b !important;
+}
+
+/* --- auth experience --- */
+.auth-page{
+    min-height:100vh;
+    background:#07100d !important;
+    color:#f5f8f4;
+}
+
+.auth-container{
+    min-height:100vh;
+    background:#07100d !important;
+}
+
+.auth-brand{
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(115deg,rgba(4,12,9,.98),rgba(7,16,13,.72)),
+        url("https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=1600&q=90") center/cover !important;
+    color:#f5f8f4 !important;
+}
+
+.auth-brand::before{
+    content:"";
+    position:absolute;
+    width:520px;
+    height:520px;
+    right:-220px;
+    top:10%;
+    border:1px solid rgba(201,255,77,.18);
+    border-radius:50%;
+    box-shadow:0 0 100px rgba(201,255,77,.06);
+}
+
+.auth-brand::after{
+    content:"FINORA";
+    position:absolute;
+    right:7%;
+    bottom:7%;
+    color:rgba(201,255,77,.14);
+    font:800 clamp(70px,11vw,170px)/.8 "Manrope",sans-serif;
+    letter-spacing:-8px;
+}
+
+.auth-logo,
+.auth-brand-content,
+.auth-brand-footer{
+    position:relative;
+    z-index:2;
+}
+
+.auth-logo{
+    color:#c9ff4d !important;
+}
+
+.auth-brand-content .section-tag{
+    color:#c9ff4d !important;
+}
+
+.auth-brand-content h1{
+    color:#ffffff !important;
+}
+
+.auth-brand-content p{
+    color:#b6c2bb !important;
+}
+
+.auth-brand-footer{
+    color:#8e9d94 !important;
+}
+
+.auth-form-section{
+    background:#f5f7f3 !important;
+}
+
+.auth-heading h2,
+.auth-heading p,
+.auth-form label,
+.auth-form input,
+.auth-form select,
+.auth-disclaimer{
+    color:#101a15 !important;
+}
+
+.auth-heading p{
+    color:#66756d !important;
+}
+
+.auth-form input,
+.auth-form select{
+    background:#ffffff !important;
+    border-color:#d6ded8 !important;
+}
+
+.auth-form input::placeholder{
+    color:#9aa79f !important;
+}
+
+.auth-submit{
+    background:#123f32 !important;
+    color:#ffffff !important;
+}
+
+.secondary-auth-btn{
+    background:#ffffff !important;
+    color:#123f32 !important;
+    border-color:#ccd7d0 !important;
+}
+
+/* --- onboarding --- */
+.onboarding-page{
+    min-height:100vh;
+    background:
+        radial-gradient(circle at 85% 15%,rgba(201,255,77,.12),transparent 28%),
+        #07100d !important;
+}
+
+.onboarding-page .auth-container{
+    background:transparent !important;
+}
+
+.onboarding-box{
+    background:rgba(255,255,255,.96) !important;
+    border:1px solid rgba(255,255,255,.15) !important;
+    box-shadow:0 35px 100px rgba(0,0,0,.35) !important;
+}
+
+.onboarding-box h1,
+.onboarding-box p,
+.onboarding-box label{
+    color:#101a15 !important;
+}
+
+/* --- app shell: dark command-center feel --- */
+.dashboard-page{
+    background:
+        radial-gradient(circle at 88% 5%,rgba(201,255,77,.07),transparent 22%),
+        #07100d !important;
+    color:#f5f8f4 !important;
+}
+
+.finora-sidebar{
+    background:rgba(7,16,13,.94) !important;
+    border-right:1px solid rgba(255,255,255,.09) !important;
+    color:#f5f8f4 !important;
+}
+
+.finora-brand{
+    color:#f5f8f4 !important;
+}
+
+.brand-mark{
+    background:#c9ff4d !important;
+    color:#07100d !important;
+    box-shadow:0 0 28px rgba(201,255,77,.16);
+}
+
+.sidebar-section-title{
+    color:#708077 !important;
+}
+
+.finora-nav-link{
+    color:#94a39a !important;
+}
+
+.finora-nav-link:hover{
+    background:rgba(255,255,255,.05) !important;
+    color:#ffffff !important;
+}
+
+.finora-nav-link.active{
+    background:rgba(201,255,77,.10) !important;
+    color:#c9ff4d !important;
+    border-color:rgba(201,255,77,.16) !important;
+}
+
+.nav-icon{
+    color:inherit !important;
+}
+
+.sidebar-note{
+    background:rgba(255,255,255,.045) !important;
+    border-color:rgba(255,255,255,.08) !important;
+}
+
+.sidebar-note strong{
+    color:#eaf0ec !important;
+}
+
+.sidebar-note p{
+    color:#7e8d84 !important;
+}
+
+.finora-logout{
+    color:#9ba9a1 !important;
+    background:rgba(255,255,255,.035) !important;
+    border-color:rgba(255,255,255,.08) !important;
+}
+
+.finora-logout:hover{
+    color:#c9ff4d !important;
+    border-color:rgba(201,255,77,.25) !important;
+}
+
+.finora-header{
+    color:#f5f8f4 !important;
+}
+
+.header-eyebrow,
+.panel-label,
+.money-card-top span,
+.money-card p,
+.header-description,
+.today-badge,
+.profile-chip span{
+    color:#87968d !important;
+}
+
+.header-left h1,
+.panel-top h2,
+.money-card h2,
+.money-card,
+.profile-chip strong,
+.today-badge,
+.profile-chip{
+    color:#f5f8f4 !important;
+}
+
+.today-badge{
+    background:rgba(255,255,255,.045) !important;
+    border-color:rgba(255,255,255,.09) !important;
+}
+
+.profile-chip{
+    background:rgba(255,255,255,.05) !important;
+    border-color:rgba(255,255,255,.09) !important;
+}
+
+.profile-avatar{
+    background:#c9ff4d !important;
+    color:#07100d !important;
+}
+
+/* Financial cards */
+.money-card,
+.dashboard-panel,
+.alert-total-card,
+.alert-monitor-card{
+    background:rgba(13,25,20,.82) !important;
+    border-color:rgba(255,255,255,.09) !important;
+    box-shadow:0 18px 55px rgba(0,0,0,.18) !important;
+}
+
+.money-card h2{
+    color:#ffffff !important;
+}
+
+.primary-money-card{
+    background:
+        radial-gradient(circle at 90% 10%,rgba(201,255,77,.20),transparent 30%),
+        linear-gradient(135deg,#173f31,#0b1e17) !important;
+    border-color:rgba(201,255,77,.18) !important;
+}
+
+.money-icon{
+    background:rgba(201,255,77,.11) !important;
+    color:#c9ff4d !important;
+}
+
+.money-card p,
+.money-card-top>span:first-child{
+    color:#91a198 !important;
+}
+
+.dashboard-panel h2,
+.dashboard-panel h3,
+.dashboard-panel strong{
+    color:#f5f8f4;
+}
+
+.panel-description,
+.dashboard-panel p{
+    color:#91a198;
+}
+
+.panel-description{
+    color:#91a198 !important;
+}
+
+.dashboard-panel input,
+.dashboard-panel select{
+    background:#101e18 !important;
+    color:#f5f8f4 !important;
+    border-color:rgba(255,255,255,.12) !important;
+}
+
+.dashboard-panel input::placeholder{
+    color:#708078 !important;
+}
+
+.dashboard-panel label{
+    color:#a9b6ae !important;
+}
+
+.dashboard-panel button{
+    color:#07100d;
+}
+
+.progress-track,
+.intelligence-track{
+    background:rgba(255,255,255,.09) !important;
+}
+
+.progress-fill,
+#financial-score-fill{
+    background:#c9ff4d !important;
+    box-shadow:0 0 20px rgba(201,255,77,.24);
+}
+
+.chart-card,
+.chart-container,
+.category-card,
+.recent-expenses,
+.goal-card,
+.expense-table-container{
+    background:rgba(13,25,20,.82) !important;
+    border-color:rgba(255,255,255,.09) !important;
+}
+
+table th{
+    color:#7e8e85 !important;
+    border-color:rgba(255,255,255,.08) !important;
+}
+
+table td{
+    color:#e7eee9 !important;
+    border-color:rgba(255,255,255,.06) !important;
+}
+
+table tr:hover td{
+    background:rgba(255,255,255,.025) !important;
+}
+
+.alert-total-card strong,
+.alert-monitor-card h2{
+    color:#ffffff !important;
+}
+
+.alert-total-card span,
+.alert-monitor-card p{
+    color:#91a198 !important;
+}
+
+.alert-total-icon{
+    background:rgba(201,255,77,.10) !important;
+    color:#c9ff4d !important;
+}
+
+.alert-monitor-icon{
+    background:rgba(201,255,77,.10) !important;
+    color:#c9ff4d !important;
+}
+
+/* Insights addon */
+.what-if-controls,
+.simulation-result,
+.simulation-result-grid>div{
+    background:#0e1b16 !important;
+    border-color:rgba(255,255,255,.09) !important;
+}
+
+.what-if-controls label,
+.simulation-result-grid span,
+#simulation-status,
+.simulation-empty p,
+#simulation-message{
+    color:#91a198 !important;
+}
+
+.simulation-input input{
+    background:#101e18 !important;
+    color:#ffffff !important;
+    border-color:rgba(255,255,255,.12) !important;
+}
+
+.simulation-result-grid strong,
+.simulation-result-header strong{
+    color:#ffffff !important;
+}
+
+.simulation-button{
+    background:#c9ff4d !important;
+    color:#07100d !important;
+}
+
+.what-if-icon,
+.simulation-empty span{
+    background:rgba(201,255,77,.10) !important;
+    color:#c9ff4d !important;
+}
+
+/* Make empty/loading/error states readable */
+.alerts-loading,
+.insight-loading,
+.empty-state,
+.loading,
+.error-message,
+.no-data{
+    color:#9aa9a0 !important;
+}
+
+.empty-state strong,
+.error-message strong{
+    color:#ffffff !important;
+}
+
+/* subtle product-wide motion */
+.finora-main>*{
+    animation:panelReveal .55s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.finora-main>*:nth-child(2){animation-delay:.04s}
+.finora-main>*:nth-child(3){animation-delay:.08s}
+.finora-main>*:nth-child(4){animation-delay:.12s}
+
+@keyframes panelReveal{
+    from{opacity:0;transform:translateY(10px)}
+    to{opacity:1;transform:translateY(0)}
+}
+
+@media(max-width:800px){
+    .hero{min-height:780px}
+    .hero::after{display:none}
+    .auth-brand{min-height:330px}
+    .auth-brand::after{font-size:80px}
+    .finora-sidebar{position:relative}
+}
+
+@media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        scroll-behavior:auto !important;
+    }
+}
