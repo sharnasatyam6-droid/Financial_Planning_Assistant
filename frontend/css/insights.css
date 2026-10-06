@@ -224,3 +224,13 @@
         flex-direction: column;
     }
 }
+
+/* FINORA // INSIGHTS THEME */
+.what-if-icon{background:#14241b !important;color:#c9ff4d !important;border:1px solid rgba(201,255,77,.12) !important}
+.what-if-controls{background:#0a140f !important;border:1px solid rgba(255,255,255,.095) !important}
+.what-if-controls label{color:#aab5ae !important}
+.what-if-controls input,.what-if-controls select{background:#07100d !important;color:#fff !important;border-color:rgba(255,255,255,.12) !important}
+.what-if-controls input::placeholder{color:#5f6d64 !important}
+.simulation-button{background:#c9ff4d !important;color:#07100d !important}
+.simulation-result{background:linear-gradient(145deg,#0f1d15,#09110d) !important;color:#fff !important;border-color:rgba(201,255,77,.14) !important}
+.simulation-result-grid>div{background:#0b1611 !important;border-color:rgba(255,255,255,.095) !important;color:#fff !important}
