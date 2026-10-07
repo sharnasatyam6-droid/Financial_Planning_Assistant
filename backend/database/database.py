@@ -6,7 +6,12 @@ import psycopg
 from psycopg.rows import dict_row
 
 
-database_path = Path(__file__).resolve().parent.parent.parent / "finora.db"
+# Vercel's filesystem is ephemeral, so use /tmp there when no PostgreSQL URL is configured.
+# Local development keeps using the project's finora.db file.
+if os.getenv("VERCEL") == "1":
+    database_path = Path("/tmp/finora.db")
+else:
+    database_path = Path(__file__).resolve().parent.parent.parent / "finora.db"
 
 
 class DatabaseConnection:
