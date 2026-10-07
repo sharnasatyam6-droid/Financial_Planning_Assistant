@@ -1,10 +1,48 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Response
 from pydantic import BaseModel
 from pwdlib import PasswordHash
 from backend.database.database import get_connection
 import re
+import base64
+import hashlib
+import hmac
+import os
+import time
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])
+
+SESSION_COOKIE = "finora_session"
+SESSION_DAYS = 7
+
+def _session_secret():
+    value = os.getenv("FINORA_SECRET_KEY") or os.getenv("DATABASE_URL") or "finora-local-secret"
+    return hashlib.sha256(value.encode("utf-8")).digest()
+
+def create_session(user_id):
+    payload = f"{int(user_id)}:{int(time.time()) + SESSION_DAYS * 86400}".encode("utf-8")
+    encoded = base64.urlsafe_b64encode(payload).decode("ascii").rstrip("=")
+    signature = hmac.new(_session_secret(), encoded.encode("ascii"), hashlib.sha256).hexdigest()
+    return f"{encoded}.{signature}"
+
+def get_user_id_from_session(token):
+    if not token or "." not in token:
+        return None
+    encoded, signature = token.rsplit(".", 1)
+    expected = hmac.new(_session_secret(), encoded.encode("ascii"), hashlib.sha256).hexdigest()
+    if not hmac.compare_digest(signature, expected):
+        return None
+    try:
+        padding = "=" * (-len(encoded) % 4)
+        payload = base64.urlsafe_b64decode((encoded + padding).encode("ascii")).decode("utf-8")
+        user_id_text, expires_text = payload.split(":", 1)
+        user_id = int(user_id_text)
+        expires = int(expires_text)
+    except (ValueError, UnicodeError, base64.binascii.Error):
+        return None
+    if user_id <= 0 or expires < int(time.time()):
+        return None
+    return user_id
+
 
 password_hash = PasswordHash.recommended()
 
@@ -118,7 +156,7 @@ class LoginData(BaseModel):
 
 
 @router.post("/login")
-def login(data: LoginData):
+def login(data: LoginData, response: Response):
     connection = get_connection()
 
     user = connection.execute(
@@ -134,6 +172,16 @@ def login(data: LoginData):
     if not password_hash.verify(data.password, user["password"]):
         raise HTTPException(status_code=401, detail="Invalid mobile number or password")
 
+    response.set_cookie(
+        key=SESSION_COOKIE,
+        value=create_session(user["id"]),
+        httponly=True,
+        secure=os.getenv("VERCEL") == "1" or os.getenv("ENVIRONMENT") == "production",
+        samesite="lax",
+        max_age=SESSION_DAYS * 86400,
+        path="/"
+    )
+
     return {
         "message": "Login successful",
         "user": {
@@ -143,3 +191,9 @@ def login(data: LoginData):
             "email": user["email"]
         }
     }
+
+
+@router.post("/logout")
+def logout(response: Response):
+    response.delete_cookie(key=SESSION_COOKIE, path="/")
+    return {"message": "Logged out successfully"}
