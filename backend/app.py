@@ -1,6 +1,7 @@
 from pathlib import Path
 
-from fastapi import FastAPI, Request, JSONResponse
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 from backend.database.database import create_tables
